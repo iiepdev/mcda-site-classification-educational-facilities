@@ -1,928 +1,1070 @@
 <!DOCTYPE model>
 <Option type="Map">
   <Option name="children" type="Map">
-    <Option name="gdal:merge_1" type="Map">
-      <Option name="active" value="true" type="bool"/>
+    <Option name="gdal:cliprasterbymasklayer_1" type="Map">
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option name="alg_id" value="gdal:merge" type="QString"/>
-      <Option name="color" value="" type="QString"/>
+      <Option name="alg_id" type="QString" value="gdal:cliprasterbymasklayer"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="320" type="double"/>
-        <Option name="component_pos_y" value="115" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="1090"/>
+        <Option name="component_pos_y" type="double" value="430"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Merge" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="670" type="double"/>
-      <Option name="component_pos_y" value="195" type="double"/>
-      <Option name="component_width" value="200" type="double"/>
-      <Option name="dependencies"/>
-      <Option name="id" value="gdal:merge_1" type="QString"/>
-      <Option name="outputs"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="Clip raster by mask layer"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="670"/>
+      <Option name="component_pos_y" type="double" value="255"/>
+      <Option name="component_width" type="double" value="200"/>
+      <Option name="dependencies" type="List">
+        <Option type="Map">
+          <Option name="child_id" type="QString" value="gdal:merge_1"/>
+          <Option name="conditional_branch" type="QString" value=""/>
+        </Option>
+        <Option type="Map">
+          <Option name="child_id" type="QString" value="gdal:rastercalculator_1"/>
+          <Option name="conditional_branch" type="QString" value=""/>
+        </Option>
+      </Option>
+      <Option name="id" type="QString" value="gdal:cliprasterbymasklayer_1"/>
+      <Option name="outputs" type="Map">
+        <Option name="Hazard index" type="Map">
+          <Option name="child_id" type="QString" value="gdal:cliprasterbymasklayer_1"/>
+          <Option name="color" type="QString" value=""/>
+          <Option name="comment" type="Map">
+            <Option name="color" type="QString" value=""/>
+            <Option name="component_description" type="QString" value=""/>
+            <Option name="component_height" type="double" value="60"/>
+            <Option name="component_pos_x" type="double" value="0"/>
+            <Option name="component_pos_y" type="double" value="0"/>
+            <Option name="component_width" type="double" value="100"/>
+            <Option name="outputs_collapsed" type="bool" value="true"/>
+            <Option name="parameters_collapsed" type="bool" value="true"/>
+          </Option>
+          <Option name="component_description" type="QString" value="Hazard index"/>
+          <Option name="component_height" type="double" value="30"/>
+          <Option name="component_pos_x" type="double" value="940"/>
+          <Option name="component_pos_y" type="double" value="225"/>
+          <Option name="component_width" type="double" value="200"/>
+          <Option name="default_value" type="invalid"/>
+          <Option name="mandatory" type="bool" value="false"/>
+          <Option name="name" type="QString" value="Hazard index"/>
+          <Option name="output_name" type="QString" value="OUTPUT"/>
+          <Option name="outputs_collapsed" type="bool" value="true"/>
+          <Option name="parameters_collapsed" type="bool" value="true"/>
+        </Option>
+      </Option>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
+        <Option name="ALPHA_BAND" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="bool" value="false"/>
+          </Option>
+        </Option>
+        <Option name="CROP_TO_CUTLINE" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="bool" value="true"/>
+          </Option>
+        </Option>
         <Option name="DATA_TYPE" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="5" type="int"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="int" value="0"/>
           </Option>
         </Option>
         <Option name="EXTRA" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value=""/>
           </Option>
         </Option>
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option name="expression" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute =2 THEN array( @Hazardlayer1 , @Hazardlayer2 ) &#xd;&#xa;WHEN  @Numberofriskstocompute =3 THEN array(  @Hazardlayer1 , @Hazardlayer2 , @Hazardlayer3 ) &#xd;&#xa;WHEN  @Numberofriskstocompute =4 THEN array(  @Hazardlayer1 , @Hazardlayer2 , @Hazardlayer3 , @Hazardlayer4  ) &#xd;&#xa;WHEN  @Numberofriskstocompute =5 THEN array( @Hazardlayer1 , @Hazardlayer2 , @Hazardlayer3 , @Hazardlayer4 , @Hazardlayer5  ) &#xd;&#xa;WHEN  @Numberofriskstocompute =6 THEN array(  @Hazardlayer1 , @Hazardlayer2 , @Hazardlayer3 , @Hazardlayer4 , @Hazardlayer5 , @Hazardlayer6 ) &#xd;&#xa;END" type="QString"/>
-            <Option name="source" value="3" type="int"/>
+            <Option name="child_id" type="QString" value="gdal:rastercalculator_1"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
+          </Option>
+        </Option>
+        <Option name="KEEP_RESOLUTION" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="bool" value="false"/>
+          </Option>
+        </Option>
+        <Option name="MASK" type="List">
+          <Option type="Map">
+            <Option name="parameter_name" type="QString" value="Studyarea"/>
+            <Option name="source" type="int" value="0"/>
+          </Option>
+        </Option>
+        <Option name="MULTITHREADING" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="bool" value="false"/>
+          </Option>
+        </Option>
+        <Option name="NODATA" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="invalid"/>
+          </Option>
+        </Option>
+        <Option name="OPTIONS" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value=""/>
+          </Option>
+        </Option>
+        <Option name="SET_RESOLUTION" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="bool" value="false"/>
+          </Option>
+        </Option>
+        <Option name="SOURCE_CRS" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="invalid"/>
+          </Option>
+        </Option>
+        <Option name="TARGET_CRS" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="invalid"/>
+          </Option>
+        </Option>
+        <Option name="X_RESOLUTION" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="invalid"/>
+          </Option>
+        </Option>
+        <Option name="Y_RESOLUTION" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="invalid"/>
+          </Option>
+        </Option>
+      </Option>
+    </Option>
+    <Option name="gdal:merge_1" type="Map">
+      <Option name="active" type="bool" value="true"/>
+      <Option name="alg_config"/>
+      <Option name="alg_id" type="QString" value="gdal:merge"/>
+      <Option name="color" type="QString" value=""/>
+      <Option name="comment" type="Map">
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="320"/>
+        <Option name="component_pos_y" type="double" value="115"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
+      </Option>
+      <Option name="component_description" type="QString" value="Merge"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="670"/>
+      <Option name="component_pos_y" type="double" value="135"/>
+      <Option name="component_width" type="double" value="200"/>
+      <Option name="dependencies"/>
+      <Option name="id" type="QString" value="gdal:merge_1"/>
+      <Option name="outputs"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
+      <Option name="params" type="Map">
+        <Option name="DATA_TYPE" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="int" value="5"/>
+          </Option>
+        </Option>
+        <Option name="EXTRA" type="List">
+          <Option type="Map">
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value=""/>
+          </Option>
+        </Option>
+        <Option name="INPUT" type="List">
+          <Option type="Map">
+            <Option name="expression" type="QString" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute =2 THEN array( @Hazardlayer1 , @Hazardlayer2 ) &#xd;&#xa;WHEN  @Numberofriskstocompute =3 THEN array(  @Hazardlayer1 , @Hazardlayer2 , @Hazardlayer3 ) &#xd;&#xa;WHEN  @Numberofriskstocompute =4 THEN array(  @Hazardlayer1 , @Hazardlayer2 , @Hazardlayer3 , @Hazardlayer4  ) &#xd;&#xa;WHEN  @Numberofriskstocompute =5 THEN array( @Hazardlayer1 , @Hazardlayer2 , @Hazardlayer3 , @Hazardlayer4 , @Hazardlayer5  ) &#xd;&#xa;WHEN  @Numberofriskstocompute =6 THEN array(  @Hazardlayer1 , @Hazardlayer2 , @Hazardlayer3 , @Hazardlayer4 , @Hazardlayer5 , @Hazardlayer6 ) &#xd;&#xa;END"/>
+            <Option name="source" type="int" value="3"/>
           </Option>
         </Option>
         <Option name="NODATA_INPUT" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
+            <Option name="source" type="int" value="2"/>
             <Option name="static_value" type="invalid"/>
           </Option>
         </Option>
         <Option name="NODATA_OUTPUT" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
+            <Option name="source" type="int" value="2"/>
             <Option name="static_value" type="invalid"/>
           </Option>
         </Option>
         <Option name="OPTIONS" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value=""/>
           </Option>
         </Option>
         <Option name="PCT" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="false" type="bool"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="bool" value="false"/>
           </Option>
         </Option>
         <Option name="SEPARATE" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="true" type="bool"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="bool" value="true"/>
           </Option>
         </Option>
       </Option>
     </Option>
     <Option name="gdal:rastercalculator_1" type="Map">
-      <Option name="active" value="true" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option name="alg_id" value="gdal:rastercalculator" type="QString"/>
-      <Option name="color" value="" type="QString"/>
+      <Option name="alg_id" type="QString" value="gdal:rastercalculator"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="880" type="double"/>
-        <Option name="component_pos_y" value="220" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="880"/>
+        <Option name="component_pos_y" type="double" value="220"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Raster calculator" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="670" type="double"/>
-      <Option name="component_pos_y" value="255" type="double"/>
-      <Option name="component_width" value="200" type="double"/>
+      <Option name="component_description" type="QString" value="Raster calculator"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="670"/>
+      <Option name="component_pos_y" type="double" value="195"/>
+      <Option name="component_width" type="double" value="200"/>
       <Option name="dependencies"/>
-      <Option name="id" value="gdal:rastercalculator_1" type="QString"/>
-      <Option name="outputs" type="Map">
-        <Option name="Hazard Index" type="Map">
-          <Option name="child_id" value="gdal:rastercalculator_1" type="QString"/>
-          <Option name="color" value="" type="QString"/>
-          <Option name="comment" type="Map">
-            <Option name="color" value="" type="QString"/>
-            <Option name="component_description" value="" type="QString"/>
-            <Option name="component_height" value="60" type="double"/>
-            <Option name="component_pos_x" value="0" type="double"/>
-            <Option name="component_pos_y" value="0" type="double"/>
-            <Option name="component_width" value="100" type="double"/>
-            <Option name="outputs_collapsed" value="true" type="bool"/>
-            <Option name="parameters_collapsed" value="true" type="bool"/>
-          </Option>
-          <Option name="component_description" value="Hazard Index" type="QString"/>
-          <Option name="component_height" value="30" type="double"/>
-          <Option name="component_pos_x" value="940" type="double"/>
-          <Option name="component_pos_y" value="225" type="double"/>
-          <Option name="component_width" value="200" type="double"/>
-          <Option name="default_value" type="invalid"/>
-          <Option name="mandatory" value="false" type="bool"/>
-          <Option name="name" value="Hazard Index" type="QString"/>
-          <Option name="output_name" value="OUTPUT" type="QString"/>
-          <Option name="outputs_collapsed" value="true" type="bool"/>
-          <Option name="parameters_collapsed" value="true" type="bool"/>
-        </Option>
-      </Option>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="id" type="QString" value="gdal:rastercalculator_1"/>
+      <Option name="outputs"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="BAND_A" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="1" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value="1"/>
           </Option>
         </Option>
         <Option name="BAND_B" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="2" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value="2"/>
           </Option>
         </Option>
         <Option name="BAND_C" type="List">
           <Option type="Map">
-            <Option name="expression" value="CASE&#xd;&#xa;WHEN @Numberofriskstocompute =3 OR @Numberofriskstocompute =4 OR @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN 3&#xd;&#xa;END" type="QString"/>
-            <Option name="source" value="3" type="int"/>
+            <Option name="expression" type="QString" value="CASE&#xd;&#xa;WHEN @Numberofriskstocompute =3 OR @Numberofriskstocompute =4 OR @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN 3&#xd;&#xa;END"/>
+            <Option name="source" type="int" value="3"/>
           </Option>
         </Option>
         <Option name="BAND_D" type="List">
           <Option type="Map">
-            <Option name="expression" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute =4 OR @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN 4&#xa;END" type="QString"/>
-            <Option name="source" value="3" type="int"/>
+            <Option name="expression" type="QString" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute =4 OR @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN 4&#xa;END"/>
+            <Option name="source" type="int" value="3"/>
           </Option>
         </Option>
         <Option name="BAND_E" type="List">
           <Option type="Map">
-            <Option name="expression" value="CASE&#xd;&#xa;WHEN @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN 5&#xa;END" type="QString"/>
-            <Option name="source" value="3" type="int"/>
+            <Option name="expression" type="QString" value="CASE&#xd;&#xa;WHEN @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN 5&#xa;END"/>
+            <Option name="source" type="int" value="3"/>
           </Option>
         </Option>
         <Option name="BAND_F" type="List">
           <Option type="Map">
-            <Option name="expression" value="CASE&#xd;&#xa;WHEN @Numberofriskstocompute =6 THEN 6&#xd;&#xa;END" type="QString"/>
-            <Option name="source" value="3" type="int"/>
+            <Option name="expression" type="QString" value="CASE&#xd;&#xa;WHEN @Numberofriskstocompute =6 THEN 6&#xd;&#xa;END"/>
+            <Option name="source" type="int" value="3"/>
           </Option>
         </Option>
         <Option name="EXTRA" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value=""/>
           </Option>
         </Option>
         <Option name="FORMULA" type="List">
           <Option type="Map">
-            <Option name="expression" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute =2 THEN concat('A*',to_string( @WeightforHazardlayer1),'+B*',to_string( @WeightforHazardlayer2))&#xd;&#xa;WHEN  @Numberofriskstocompute =3 THEN concat('A*',to_string( @WeightforHazardlayer1),'+B*',to_string( @WeightforHazardlayer2), '+C*',to_string( @WeightforHazardlayer3))&#xd;&#xa;WHEN  @Numberofriskstocompute =4 THEN concat('A*',to_string( @WeightforHazardlayer1),'+B*',to_string( @WeightforHazardlayer2), '+C*',to_string( @WeightforHazardlayer3), '+D*',to_string( @WeightforHazardlayer4))&#xd;&#xa;WHEN  @Numberofriskstocompute =5 THEN concat('A*',to_string( @WeightforHazardlayer1),'+B*',to_string( @WeightforHazardlayer2), '+C*',to_string( @WeightforHazardlayer3), '+D*',to_string( @WeightforHazardlayer4), '+E*',to_string( @WeightforHazardlayer5))&#xd;&#xa;WHEN  @Numberofriskstocompute =6 THEN concat('A*',to_string( @WeightforHazardlayer1),'+B*',to_string( @WeightforHazardlayer2), '+C*',to_string( @WeightforHazardlayer3), '+D*',to_string( @WeightforHazardlayer4), '+E*',to_string( @WeightforHazardlayer5), '+F*',to_string( @WeightforHazardlayer6 ))&#xd;&#xa;END" type="QString"/>
-            <Option name="source" value="3" type="int"/>
+            <Option name="expression" type="QString" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute =2 THEN concat('A*',to_string( @WeightforHazardlayer1),'+B*',to_string( @WeightforHazardlayer2))&#xd;&#xa;WHEN  @Numberofriskstocompute =3 THEN concat('A*',to_string( @WeightforHazardlayer1),'+B*',to_string( @WeightforHazardlayer2), '+C*',to_string( @WeightforHazardlayer3))&#xd;&#xa;WHEN  @Numberofriskstocompute =4 THEN concat('A*',to_string( @WeightforHazardlayer1),'+B*',to_string( @WeightforHazardlayer2), '+C*',to_string( @WeightforHazardlayer3), '+D*',to_string( @WeightforHazardlayer4))&#xd;&#xa;WHEN  @Numberofriskstocompute =5 THEN concat('A*',to_string( @WeightforHazardlayer1),'+B*',to_string( @WeightforHazardlayer2), '+C*',to_string( @WeightforHazardlayer3), '+D*',to_string( @WeightforHazardlayer4), '+E*',to_string( @WeightforHazardlayer5))&#xd;&#xa;WHEN  @Numberofriskstocompute =6 THEN concat('A*',to_string( @WeightforHazardlayer1),'+B*',to_string( @WeightforHazardlayer2), '+C*',to_string( @WeightforHazardlayer3), '+D*',to_string( @WeightforHazardlayer4), '+E*',to_string( @WeightforHazardlayer5), '+F*',to_string( @WeightforHazardlayer6 ))&#xd;&#xa;END"/>
+            <Option name="source" type="int" value="3"/>
           </Option>
         </Option>
         <Option name="INPUT_A" type="List">
           <Option type="Map">
-            <Option name="child_id" value="gdal:merge_1" type="QString"/>
-            <Option name="output_name" value="OUTPUT" type="QString"/>
-            <Option name="source" value="1" type="int"/>
+            <Option name="child_id" type="QString" value="gdal:merge_1"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
         </Option>
         <Option name="INPUT_B" type="List">
           <Option type="Map">
-            <Option name="child_id" value="gdal:merge_1" type="QString"/>
-            <Option name="output_name" value="OUTPUT" type="QString"/>
-            <Option name="source" value="1" type="int"/>
+            <Option name="child_id" type="QString" value="gdal:merge_1"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
         </Option>
         <Option name="INPUT_C" type="List">
           <Option type="Map">
-            <Option name="expression" value="CASE&#xd;&#xa;WHEN @Numberofriskstocompute =3 OR @Numberofriskstocompute =4 OR @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN @Merge_OUTPUT &#xd;&#xa;END" type="QString"/>
-            <Option name="source" value="3" type="int"/>
+            <Option name="expression" type="QString" value="CASE&#xd;&#xa;WHEN @Numberofriskstocompute =3 OR @Numberofriskstocompute =4 OR @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN @Merge_OUTPUT &#xd;&#xa;END"/>
+            <Option name="source" type="int" value="3"/>
           </Option>
         </Option>
         <Option name="INPUT_D" type="List">
           <Option type="Map">
-            <Option name="expression" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute =4 OR @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN @Merge_OUTPUT &#xd;&#xa;END" type="QString"/>
-            <Option name="source" value="3" type="int"/>
+            <Option name="expression" type="QString" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute =4 OR @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN @Merge_OUTPUT &#xd;&#xa;END"/>
+            <Option name="source" type="int" value="3"/>
           </Option>
         </Option>
         <Option name="INPUT_E" type="List">
           <Option type="Map">
-            <Option name="expression" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN @Merge_OUTPUT &#xd;&#xa;END" type="QString"/>
-            <Option name="source" value="3" type="int"/>
+            <Option name="expression" type="QString" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute =5 OR  @Numberofriskstocompute =6 THEN @Merge_OUTPUT &#xd;&#xa;END"/>
+            <Option name="source" type="int" value="3"/>
           </Option>
         </Option>
         <Option name="INPUT_F" type="List">
           <Option type="Map">
-            <Option name="expression" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute = 6 THEN @Merge_OUTPUT &#xd;&#xa;END" type="QString"/>
-            <Option name="source" value="3" type="int"/>
+            <Option name="expression" type="QString" value="CASE&#xd;&#xa;WHEN  @Numberofriskstocompute = 6 THEN @Merge_OUTPUT &#xd;&#xa;END"/>
+            <Option name="source" type="int" value="3"/>
           </Option>
         </Option>
         <Option name="NO_DATA" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
+            <Option name="source" type="int" value="2"/>
             <Option name="static_value" type="invalid"/>
           </Option>
         </Option>
         <Option name="OPTIONS" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value=""/>
           </Option>
         </Option>
         <Option name="RTYPE" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="5" type="int"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="int" value="5"/>
           </Option>
         </Option>
       </Option>
     </Option>
     <Option name="native:clip_1" type="Map">
-      <Option name="active" value="true" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option name="alg_id" value="native:clip" type="QString"/>
-      <Option name="color" value="" type="QString"/>
+      <Option name="alg_id" type="QString" value="native:clip"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="1090" type="double"/>
-        <Option name="component_pos_y" value="430" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="1090"/>
+        <Option name="component_pos_y" type="double" value="430"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Clip" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="670" type="double"/>
-      <Option name="component_pos_y" value="315" type="double"/>
-      <Option name="component_width" value="200" type="double"/>
+      <Option name="component_description" type="QString" value="Clip"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="670"/>
+      <Option name="component_pos_y" type="double" value="315"/>
+      <Option name="component_width" type="double" value="200"/>
       <Option name="dependencies"/>
-      <Option name="id" value="native:clip_1" type="QString"/>
+      <Option name="id" type="QString" value="native:clip_1"/>
       <Option name="outputs"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option name="parameter_name" value="Schools" type="QString"/>
-            <Option name="source" value="0" type="int"/>
+            <Option name="parameter_name" type="QString" value="Schools"/>
+            <Option name="source" type="int" value="0"/>
           </Option>
         </Option>
         <Option name="OVERLAY" type="List">
           <Option type="Map">
-            <Option name="parameter_name" value="Studyarea" type="QString"/>
-            <Option name="source" value="0" type="int"/>
+            <Option name="parameter_name" type="QString" value="Studyarea"/>
+            <Option name="source" type="int" value="0"/>
           </Option>
         </Option>
       </Option>
     </Option>
     <Option name="native:rastersampling_1" type="Map">
-      <Option name="active" value="true" type="bool"/>
+      <Option name="active" type="bool" value="true"/>
       <Option name="alg_config"/>
-      <Option name="alg_id" value="native:rastersampling" type="QString"/>
-      <Option name="color" value="" type="QString"/>
+      <Option name="alg_id" type="QString" value="native:rastersampling"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="1090" type="double"/>
-        <Option name="component_pos_y" value="310" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="1090"/>
+        <Option name="component_pos_y" type="double" value="310"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Sample raster values" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="670" type="double"/>
-      <Option name="component_pos_y" value="375" type="double"/>
-      <Option name="component_width" value="200" type="double"/>
+      <Option name="component_description" type="QString" value="Sample raster values"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="670"/>
+      <Option name="component_pos_y" type="double" value="375"/>
+      <Option name="component_width" type="double" value="200"/>
       <Option name="dependencies"/>
-      <Option name="id" value="native:rastersampling_1" type="QString"/>
+      <Option name="id" type="QString" value="native:rastersampling_1"/>
       <Option name="outputs" type="Map">
         <Option name="Hazard Index - Schools" type="Map">
-          <Option name="child_id" value="native:rastersampling_1" type="QString"/>
-          <Option name="color" value="" type="QString"/>
+          <Option name="child_id" type="QString" value="native:rastersampling_1"/>
+          <Option name="color" type="QString" value=""/>
           <Option name="comment" type="Map">
-            <Option name="color" value="" type="QString"/>
-            <Option name="component_description" value="" type="QString"/>
-            <Option name="component_height" value="60" type="double"/>
-            <Option name="component_pos_x" value="0" type="double"/>
-            <Option name="component_pos_y" value="0" type="double"/>
-            <Option name="component_width" value="100" type="double"/>
-            <Option name="outputs_collapsed" value="true" type="bool"/>
-            <Option name="parameters_collapsed" value="true" type="bool"/>
+            <Option name="color" type="QString" value=""/>
+            <Option name="component_description" type="QString" value=""/>
+            <Option name="component_height" type="double" value="60"/>
+            <Option name="component_pos_x" type="double" value="0"/>
+            <Option name="component_pos_y" type="double" value="0"/>
+            <Option name="component_width" type="double" value="100"/>
+            <Option name="outputs_collapsed" type="bool" value="true"/>
+            <Option name="parameters_collapsed" type="bool" value="true"/>
           </Option>
-          <Option name="component_description" value="Hazard Index - Schools" type="QString"/>
-          <Option name="component_height" value="30" type="double"/>
-          <Option name="component_pos_x" value="940" type="double"/>
-          <Option name="component_pos_y" value="285" type="double"/>
-          <Option name="component_width" value="200" type="double"/>
+          <Option name="component_description" type="QString" value="Hazard Index - Schools"/>
+          <Option name="component_height" type="double" value="30"/>
+          <Option name="component_pos_x" type="double" value="940"/>
+          <Option name="component_pos_y" type="double" value="285"/>
+          <Option name="component_width" type="double" value="200"/>
           <Option name="default_value" type="invalid"/>
-          <Option name="mandatory" value="false" type="bool"/>
-          <Option name="name" value="Hazard Index - Schools" type="QString"/>
-          <Option name="output_name" value="OUTPUT" type="QString"/>
-          <Option name="outputs_collapsed" value="true" type="bool"/>
-          <Option name="parameters_collapsed" value="true" type="bool"/>
+          <Option name="mandatory" type="bool" value="false"/>
+          <Option name="name" type="QString" value="Hazard Index - Schools"/>
+          <Option name="output_name" type="QString" value="OUTPUT"/>
+          <Option name="outputs_collapsed" type="bool" value="true"/>
+          <Option name="parameters_collapsed" type="bool" value="true"/>
         </Option>
       </Option>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
       <Option name="params" type="Map">
         <Option name="COLUMN_PREFIX" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="HazardIndex" type="QString"/>
+            <Option name="source" type="int" value="2"/>
+            <Option name="static_value" type="QString" value="HazardIndex"/>
           </Option>
         </Option>
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option name="child_id" value="native:clip_1" type="QString"/>
-            <Option name="output_name" value="OUTPUT" type="QString"/>
-            <Option name="source" value="1" type="int"/>
+            <Option name="child_id" type="QString" value="native:clip_1"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
         </Option>
         <Option name="RASTERCOPY" type="List">
           <Option type="Map">
-            <Option name="child_id" value="gdal:rastercalculator_1" type="QString"/>
-            <Option name="output_name" value="OUTPUT" type="QString"/>
-            <Option name="source" value="1" type="int"/>
+            <Option name="child_id" type="QString" value="gdal:rastercalculator_1"/>
+            <Option name="output_name" type="QString" value="OUTPUT"/>
+            <Option name="source" type="int" value="1"/>
           </Option>
         </Option>
       </Option>
     </Option>
   </Option>
   <Option name="designerParameterValues" type="Map">
-    <Option name="Hazardlayer1" value="Hazard_Earthquake_Aceh_526a3409_1d65_46e9_8466_975078eab852" type="QString"/>
-    <Option name="Hazardlayer2" value="Hazard_Flood_Aceh_b8d9c237_05c7_47ae_96d5_af271a803417" type="QString"/>
-    <Option name="Hazardlayer3" value="Hazard_Landslide_Aceh_d7adcc1a_bc3d_40fc_a0d4_508ba1ed5695" type="QString"/>
-    <Option name="Hazardlayer4" value="Hazard_SevereWeather_Aceh_cbb0d96d_5af0_4a27_a543_e83b7f54ab9f" type="QString"/>
-    <Option name="Hazardlayer5" value="Hazard_Tsunami_Aceh_4326ca6a_e172_4114_9576_7363f8f451e2" type="QString"/>
-    <Option name="Numberofriskstocompute" value="5" type="int"/>
-    <Option name="Schools" value="EducationFacilitiesIndonesia_696fed1a_6565_4c3c_9027_8c3fc393124d" type="QString"/>
+    <Option name="Hazardlayer1" type="QString" value="Hazard_Earthquake_Aceh_526a3409_1d65_46e9_8466_975078eab852"/>
+    <Option name="Hazardlayer2" type="QString" value="Hazard_Flood_Aceh_b8d9c237_05c7_47ae_96d5_af271a803417"/>
+    <Option name="Hazardlayer3" type="QString" value="Hazard_Landslide_Aceh_d7adcc1a_bc3d_40fc_a0d4_508ba1ed5695"/>
+    <Option name="Hazardlayer4" type="QString" value="Hazard_SevereWeather_Aceh_cbb0d96d_5af0_4a27_a543_e83b7f54ab9f"/>
+    <Option name="Hazardlayer5" type="QString" value="Hazard_Tsunami_Aceh_4326ca6a_e172_4114_9576_7363f8f451e2"/>
+    <Option name="Numberofriskstocompute" type="int" value="5"/>
+    <Option name="Schools" type="QString" value="EducationFacilitiesIndonesia_696fed1a_6565_4c3c_9027_8c3fc393124d"/>
     <Option name="gdal:rastercalculator_1:Hazard Index" type="QgsProcessingOutputLayerDefinition">
       <Option type="Map">
         <Option name="create_options" type="Map">
-          <Option name="fileEncoding" value="System" type="QString"/>
+          <Option name="fileEncoding" type="QString" value="System"/>
         </Option>
         <Option name="sink" type="Map">
-          <Option name="active" value="true" type="bool"/>
-          <Option name="type" value="1" type="int"/>
-          <Option name="val" value="TEMPORARY_OUTPUT" type="QString"/>
+          <Option name="active" type="bool" value="true"/>
+          <Option name="type" type="int" value="1"/>
+          <Option name="val" type="QString" value="TEMPORARY_OUTPUT"/>
         </Option>
       </Option>
     </Option>
     <Option name="native:rastersampling_1:Hazard Index - Schools" type="QgsProcessingOutputLayerDefinition">
       <Option type="Map">
         <Option name="create_options" type="Map">
-          <Option name="fileEncoding" value="System" type="QString"/>
+          <Option name="fileEncoding" type="QString" value="System"/>
         </Option>
         <Option name="sink" type="Map">
-          <Option name="active" value="true" type="bool"/>
-          <Option name="type" value="1" type="int"/>
-          <Option name="val" value="TEMPORARY_OUTPUT" type="QString"/>
+          <Option name="active" type="bool" value="true"/>
+          <Option name="type" type="int" value="1"/>
+          <Option name="val" type="QString" value="TEMPORARY_OUTPUT"/>
         </Option>
       </Option>
     </Option>
   </Option>
   <Option name="groupBoxes"/>
-  <Option name="help"/>
+  <Option name="help" type="Map">
+    <Option name="ALG_CREATOR" type="QString" value="Development unit at IIEP-UNESCO (development@iiep.unesco.org)"/>
+    <Option name="ALG_DESC" type="QString" value="This algorithm creates a composite hazard risk index by using anywhere from 2 to 6 different raster hazard risk layers. The user can define custom weights (default is 1) for each raster. The result include a raster "/>
+    <Option name="ALG_HELP_CREATOR" type="QString" value="Development unit at IIEP-UNESCO (development@iiep.unesco.org)"/>
+    <Option name="ALG_VERSION" type="QString" value="1.0"/>
+    <Option name="HELP_URL" type="QString" value="https://github.com/iiepdev/mcda-site-classification-educational-facilities"/>
+    <Option name="Hazardlayer1" type="QString" value=""/>
+    <Option name="Numberofriskstocompute" type="QString" value="Any whole number between 2 and 6"/>
+    <Option name="SHORT_DESCRIPTION" type="QString" value="This model is linked to the paper Site Classification of Educational Facilities and Infrastructure, by Gagnon, Vargas Mesa, &amp; Sheldon (forthcoming), in a joint publication between IIEP-UNESCO and UNOSAT. It is based on a methodology to perform a customized classification of educational facilities according to a context-relevant hazard risk index."/>
+    <Option name="Schools" type="QString" value="A point vector layer with one observation for each school in the area of analysis"/>
+    <Option name="Studyarea" type="QString" value="A polygon vector layer delimiting the area of analysis."/>
+    <Option name="WeightforHazardlayer1" type="QString" value=""/>
+    <Option name="gdal:rastercalculator_1:Hazard Index" type="QString" value="The resulting raster file with the composite hazard index."/>
+    <Option name="native:rastersampling_1:Hazard Index - Schools" type="QString" value="The original point layer file with the information on the composite hazard index that corresponds to the location of the school"/>
+  </Option>
   <Option name="modelVariables"/>
-  <Option name="model_group" value="Final models" type="QString"/>
-  <Option name="model_name" value="Natural Hazard Risks for Schools" type="QString"/>
+  <Option name="model_group" type="QString" value="Final models"/>
+  <Option name="model_name" type="QString" value="Natural Hazard Risks for Schools"/>
   <Option name="parameterDefinitions" type="Map">
     <Option name="Hazardlayer1" type="Map">
       <Option name="default" type="invalid"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Hazard layer 1" type="QString"/>
-      <Option name="flags" value="0" type="int"/>
-      <Option name="help" value="" type="QString"/>
+      <Option name="description" type="QString" value="Hazard layer 1"/>
+      <Option name="flags" type="int" value="0"/>
+      <Option name="help" type="QString" value=""/>
       <Option name="metadata"/>
-      <Option name="name" value="Hazardlayer1" type="QString"/>
-      <Option name="parameter_type" value="raster" type="QString"/>
+      <Option name="name" type="QString" value="Hazardlayer1"/>
+      <Option name="parameter_type" type="QString" value="raster"/>
     </Option>
     <Option name="Hazardlayer2" type="Map">
       <Option name="default" type="invalid"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Hazard layer 2" type="QString"/>
-      <Option name="flags" value="0" type="int"/>
-      <Option name="help" value="" type="QString"/>
+      <Option name="description" type="QString" value="Hazard layer 2"/>
+      <Option name="flags" type="int" value="0"/>
+      <Option name="help" type="QString" value=""/>
       <Option name="metadata"/>
-      <Option name="name" value="Hazardlayer2" type="QString"/>
-      <Option name="parameter_type" value="raster" type="QString"/>
+      <Option name="name" type="QString" value="Hazardlayer2"/>
+      <Option name="parameter_type" type="QString" value="raster"/>
     </Option>
     <Option name="Hazardlayer3" type="Map">
       <Option name="default" type="invalid"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Hazard layer 3" type="QString"/>
-      <Option name="flags" value="8" type="int"/>
-      <Option name="help" value="" type="QString"/>
+      <Option name="description" type="QString" value="Hazard layer 3"/>
+      <Option name="flags" type="int" value="8"/>
+      <Option name="help" type="QString" value=""/>
       <Option name="metadata"/>
-      <Option name="name" value="Hazardlayer3" type="QString"/>
-      <Option name="parameter_type" value="raster" type="QString"/>
+      <Option name="name" type="QString" value="Hazardlayer3"/>
+      <Option name="parameter_type" type="QString" value="raster"/>
     </Option>
     <Option name="Hazardlayer4" type="Map">
       <Option name="default" type="invalid"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Hazard layer 4" type="QString"/>
-      <Option name="flags" value="8" type="int"/>
-      <Option name="help" value="" type="QString"/>
+      <Option name="description" type="QString" value="Hazard layer 4"/>
+      <Option name="flags" type="int" value="8"/>
+      <Option name="help" type="QString" value=""/>
       <Option name="metadata"/>
-      <Option name="name" value="Hazardlayer4" type="QString"/>
-      <Option name="parameter_type" value="raster" type="QString"/>
+      <Option name="name" type="QString" value="Hazardlayer4"/>
+      <Option name="parameter_type" type="QString" value="raster"/>
     </Option>
     <Option name="Hazardlayer5" type="Map">
       <Option name="default" type="invalid"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Hazard layer 5" type="QString"/>
-      <Option name="flags" value="8" type="int"/>
-      <Option name="help" value="" type="QString"/>
+      <Option name="description" type="QString" value="Hazard layer 5"/>
+      <Option name="flags" type="int" value="8"/>
+      <Option name="help" type="QString" value=""/>
       <Option name="metadata"/>
-      <Option name="name" value="Hazardlayer5" type="QString"/>
-      <Option name="parameter_type" value="raster" type="QString"/>
+      <Option name="name" type="QString" value="Hazardlayer5"/>
+      <Option name="parameter_type" type="QString" value="raster"/>
     </Option>
     <Option name="Hazardlayer6" type="Map">
       <Option name="default" type="invalid"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Hazard layer 6" type="QString"/>
-      <Option name="flags" value="8" type="int"/>
-      <Option name="help" value="" type="QString"/>
+      <Option name="description" type="QString" value="Hazard layer 6"/>
+      <Option name="flags" type="int" value="8"/>
+      <Option name="help" type="QString" value=""/>
       <Option name="metadata"/>
-      <Option name="name" value="Hazardlayer6" type="QString"/>
-      <Option name="parameter_type" value="raster" type="QString"/>
+      <Option name="name" type="QString" value="Hazardlayer6"/>
+      <Option name="parameter_type" type="QString" value="raster"/>
     </Option>
     <Option name="Numberofriskstocompute" type="Map">
-      <Option name="data_type" value="0" type="int"/>
-      <Option name="default" value="6" type="double"/>
+      <Option name="data_type" type="int" value="0"/>
+      <Option name="default" type="double" value="6"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Number of risks to compute" type="QString"/>
-      <Option name="flags" value="0" type="int"/>
-      <Option name="help" value="" type="QString"/>
-      <Option name="max" value="6" type="double"/>
+      <Option name="description" type="QString" value="Number of risks to compute"/>
+      <Option name="flags" type="int" value="0"/>
+      <Option name="help" type="QString" value="Any whole number between 2 and 6"/>
+      <Option name="max" type="double" value="6"/>
       <Option name="metadata"/>
-      <Option name="min" value="2" type="double"/>
-      <Option name="name" value="Numberofriskstocompute" type="QString"/>
-      <Option name="parameter_type" value="number" type="QString"/>
+      <Option name="min" type="double" value="2"/>
+      <Option name="name" type="QString" value="Numberofriskstocompute"/>
+      <Option name="parameter_type" type="QString" value="number"/>
     </Option>
     <Option name="Schools" type="Map">
       <Option name="data_types" type="List">
-        <Option value="0" type="int"/>
+        <Option type="int" value="0"/>
       </Option>
       <Option name="default" type="invalid"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Schools" type="QString"/>
-      <Option name="flags" value="0" type="int"/>
-      <Option name="help" value="" type="QString"/>
+      <Option name="description" type="QString" value="Schools"/>
+      <Option name="flags" type="int" value="0"/>
+      <Option name="help" type="QString" value="A point vector layer with one observation for each school in the area of analysis"/>
       <Option name="metadata"/>
-      <Option name="name" value="Schools" type="QString"/>
-      <Option name="parameter_type" value="vector" type="QString"/>
+      <Option name="name" type="QString" value="Schools"/>
+      <Option name="parameter_type" type="QString" value="vector"/>
     </Option>
     <Option name="Studyarea" type="Map">
       <Option name="data_types" type="List">
-        <Option value="2" type="int"/>
+        <Option type="int" value="2"/>
       </Option>
       <Option name="default" type="invalid"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Study area" type="QString"/>
-      <Option name="flags" value="0" type="int"/>
-      <Option name="help" value="" type="QString"/>
+      <Option name="description" type="QString" value="Study area"/>
+      <Option name="flags" type="int" value="0"/>
+      <Option name="help" type="QString" value="A polygon vector layer delimiting the area of analysis."/>
       <Option name="metadata"/>
-      <Option name="name" value="Studyarea" type="QString"/>
-      <Option name="parameter_type" value="vector" type="QString"/>
+      <Option name="name" type="QString" value="Studyarea"/>
+      <Option name="parameter_type" type="QString" value="vector"/>
     </Option>
     <Option name="WeightforHazardlayer1" type="Map">
-      <Option name="data_type" value="1" type="int"/>
-      <Option name="default" value="1" type="double"/>
+      <Option name="data_type" type="int" value="1"/>
+      <Option name="default" type="double" value="1"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Weight for Hazard layer 1" type="QString"/>
-      <Option name="flags" value="0" type="int"/>
-      <Option name="help" value="" type="QString"/>
-      <Option name="max" value="1" type="double"/>
+      <Option name="description" type="QString" value="Weight for Hazard layer 1"/>
+      <Option name="flags" type="int" value="0"/>
+      <Option name="help" type="QString" value=""/>
+      <Option name="max" type="double" value="1"/>
       <Option name="metadata"/>
-      <Option name="min" value="0" type="double"/>
-      <Option name="name" value="WeightforHazardlayer1" type="QString"/>
-      <Option name="parameter_type" value="number" type="QString"/>
+      <Option name="min" type="double" value="0"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer1"/>
+      <Option name="parameter_type" type="QString" value="number"/>
     </Option>
     <Option name="WeightforHazardlayer2" type="Map">
-      <Option name="data_type" value="1" type="int"/>
-      <Option name="default" value="1" type="double"/>
+      <Option name="data_type" type="int" value="1"/>
+      <Option name="default" type="double" value="1"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Weight for Hazard layer 2" type="QString"/>
-      <Option name="flags" value="0" type="int"/>
-      <Option name="help" value="" type="QString"/>
-      <Option name="max" value="1" type="double"/>
+      <Option name="description" type="QString" value="Weight for Hazard layer 2"/>
+      <Option name="flags" type="int" value="0"/>
+      <Option name="help" type="QString" value=""/>
+      <Option name="max" type="double" value="1"/>
       <Option name="metadata"/>
-      <Option name="min" value="0" type="double"/>
-      <Option name="name" value="WeightforHazardlayer2" type="QString"/>
-      <Option name="parameter_type" value="number" type="QString"/>
+      <Option name="min" type="double" value="0"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer2"/>
+      <Option name="parameter_type" type="QString" value="number"/>
     </Option>
     <Option name="WeightforHazardlayer3" type="Map">
-      <Option name="data_type" value="1" type="int"/>
-      <Option name="default" value="1" type="double"/>
+      <Option name="data_type" type="int" value="1"/>
+      <Option name="default" type="double" value="1"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Weight for Hazard layer 3" type="QString"/>
-      <Option name="flags" value="8" type="int"/>
-      <Option name="help" value="" type="QString"/>
-      <Option name="max" value="1" type="double"/>
+      <Option name="description" type="QString" value="Weight for Hazard layer 3"/>
+      <Option name="flags" type="int" value="8"/>
+      <Option name="help" type="QString" value=""/>
+      <Option name="max" type="double" value="1"/>
       <Option name="metadata"/>
-      <Option name="min" value="0" type="double"/>
-      <Option name="name" value="WeightforHazardlayer3" type="QString"/>
-      <Option name="parameter_type" value="number" type="QString"/>
+      <Option name="min" type="double" value="0"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer3"/>
+      <Option name="parameter_type" type="QString" value="number"/>
     </Option>
     <Option name="WeightforHazardlayer4" type="Map">
-      <Option name="data_type" value="1" type="int"/>
-      <Option name="default" value="1" type="double"/>
+      <Option name="data_type" type="int" value="1"/>
+      <Option name="default" type="double" value="1"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Weight for Hazard layer 4" type="QString"/>
-      <Option name="flags" value="8" type="int"/>
-      <Option name="help" value="" type="QString"/>
-      <Option name="max" value="1" type="double"/>
+      <Option name="description" type="QString" value="Weight for Hazard layer 4"/>
+      <Option name="flags" type="int" value="8"/>
+      <Option name="help" type="QString" value=""/>
+      <Option name="max" type="double" value="1"/>
       <Option name="metadata"/>
-      <Option name="min" value="0" type="double"/>
-      <Option name="name" value="WeightforHazardlayer4" type="QString"/>
-      <Option name="parameter_type" value="number" type="QString"/>
+      <Option name="min" type="double" value="0"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer4"/>
+      <Option name="parameter_type" type="QString" value="number"/>
     </Option>
     <Option name="WeightforHazardlayer5" type="Map">
-      <Option name="data_type" value="1" type="int"/>
-      <Option name="default" value="1" type="double"/>
+      <Option name="data_type" type="int" value="1"/>
+      <Option name="default" type="double" value="1"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Weight for Hazard layer 5" type="QString"/>
-      <Option name="flags" value="8" type="int"/>
-      <Option name="help" value="" type="QString"/>
-      <Option name="max" value="1" type="double"/>
+      <Option name="description" type="QString" value="Weight for Hazard layer 5"/>
+      <Option name="flags" type="int" value="8"/>
+      <Option name="help" type="QString" value=""/>
+      <Option name="max" type="double" value="1"/>
       <Option name="metadata"/>
-      <Option name="min" value="0" type="double"/>
-      <Option name="name" value="WeightforHazardlayer5" type="QString"/>
-      <Option name="parameter_type" value="number" type="QString"/>
+      <Option name="min" type="double" value="0"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer5"/>
+      <Option name="parameter_type" type="QString" value="number"/>
     </Option>
     <Option name="WeightforHazardlayer6" type="Map">
-      <Option name="data_type" value="1" type="int"/>
-      <Option name="default" value="1" type="double"/>
+      <Option name="data_type" type="int" value="1"/>
+      <Option name="default" type="double" value="1"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Weight for Hazard layer 6" type="QString"/>
-      <Option name="flags" value="8" type="int"/>
-      <Option name="help" value="" type="QString"/>
-      <Option name="max" value="1" type="double"/>
+      <Option name="description" type="QString" value="Weight for Hazard layer 6"/>
+      <Option name="flags" type="int" value="8"/>
+      <Option name="help" type="QString" value=""/>
+      <Option name="max" type="double" value="1"/>
       <Option name="metadata"/>
-      <Option name="min" value="0" type="double"/>
-      <Option name="name" value="WeightforHazardlayer6" type="QString"/>
-      <Option name="parameter_type" value="number" type="QString"/>
+      <Option name="min" type="double" value="0"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer6"/>
+      <Option name="parameter_type" type="QString" value="number"/>
     </Option>
-    <Option name="gdal:rastercalculator_1:Hazard Index" type="Map">
-      <Option name="create_by_default" value="true" type="bool"/>
+    <Option name="gdal:cliprasterbymasklayer_1:Hazard index" type="Map">
+      <Option name="create_by_default" type="bool" value="true"/>
       <Option name="default" type="invalid"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Hazard Index" type="QString"/>
-      <Option name="flags" value="0" type="int"/>
-      <Option name="help" value="" type="QString"/>
+      <Option name="description" type="QString" value="Hazard index"/>
+      <Option name="flags" type="int" value="0"/>
+      <Option name="help" type="QString" value=""/>
       <Option name="metadata"/>
-      <Option name="name" value="gdal:rastercalculator_1:Hazard Index" type="QString"/>
-      <Option name="parameter_type" value="rasterDestination" type="QString"/>
-      <Option name="supports_non_file_outputs" value="false" type="bool"/>
+      <Option name="name" type="QString" value="gdal:cliprasterbymasklayer_1:Hazard index"/>
+      <Option name="parameter_type" type="QString" value="rasterDestination"/>
+      <Option name="supports_non_file_outputs" type="bool" value="false"/>
     </Option>
     <Option name="native:rastersampling_1:Hazard Index - Schools" type="Map">
-      <Option name="create_by_default" value="true" type="bool"/>
-      <Option name="data_type" value="0" type="int"/>
+      <Option name="create_by_default" type="bool" value="true"/>
+      <Option name="data_type" type="int" value="0"/>
       <Option name="default" type="invalid"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Hazard Index - Schools" type="QString"/>
-      <Option name="flags" value="0" type="int"/>
-      <Option name="help" value="" type="QString"/>
+      <Option name="description" type="QString" value="Hazard Index - Schools"/>
+      <Option name="flags" type="int" value="0"/>
+      <Option name="help" type="QString" value=""/>
       <Option name="metadata"/>
-      <Option name="name" value="native:rastersampling_1:Hazard Index - Schools" type="QString"/>
-      <Option name="parameter_type" value="sink" type="QString"/>
-      <Option name="supports_append" value="false" type="bool"/>
-      <Option name="supports_non_file_outputs" value="true" type="bool"/>
+      <Option name="name" type="QString" value="native:rastersampling_1:Hazard Index - Schools"/>
+      <Option name="parameter_type" type="QString" value="sink"/>
+      <Option name="supports_append" type="bool" value="false"/>
+      <Option name="supports_non_file_outputs" type="bool" value="true"/>
     </Option>
   </Option>
   <Option name="parameterOrder" type="StringList">
-    <Option value="Numberofriskstocompute" type="QString"/>
-    <Option value="Hazardlayer1" type="QString"/>
-    <Option value="WeightforHazardlayer1" type="QString"/>
-    <Option value="Hazardlayer2" type="QString"/>
-    <Option value="WeightforHazardlayer2" type="QString"/>
-    <Option value="Hazardlayer3" type="QString"/>
-    <Option value="WeightforHazardlayer3" type="QString"/>
-    <Option value="Hazardlayer4" type="QString"/>
-    <Option value="WeightforHazardlayer4" type="QString"/>
-    <Option value="Hazardlayer5" type="QString"/>
-    <Option value="WeightforHazardlayer5" type="QString"/>
-    <Option value="Hazardlayer6" type="QString"/>
-    <Option value="WeightforHazardlayer6" type="QString"/>
+    <Option type="QString" value="Numberofriskstocompute"/>
+    <Option type="QString" value="Hazardlayer1"/>
+    <Option type="QString" value="WeightforHazardlayer1"/>
+    <Option type="QString" value="Hazardlayer2"/>
+    <Option type="QString" value="WeightforHazardlayer2"/>
+    <Option type="QString" value="Hazardlayer3"/>
+    <Option type="QString" value="WeightforHazardlayer3"/>
+    <Option type="QString" value="Hazardlayer4"/>
+    <Option type="QString" value="WeightforHazardlayer4"/>
+    <Option type="QString" value="Hazardlayer5"/>
+    <Option type="QString" value="WeightforHazardlayer5"/>
+    <Option type="QString" value="Hazardlayer6"/>
+    <Option type="QString" value="WeightforHazardlayer6"/>
   </Option>
   <Option name="parameters" type="Map">
     <Option name="Hazardlayer1" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="320" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="320"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Hazardlayer1" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="105" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="Hazardlayer1" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="Hazardlayer1"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="135"/>
+      <Option name="component_pos_y" type="double" value="105"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="Hazardlayer1"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="Hazardlayer2" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="540" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="540"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Hazardlayer2" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="165" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="Hazardlayer2" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="Hazardlayer2"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="135"/>
+      <Option name="component_pos_y" type="double" value="165"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="Hazardlayer2"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="Hazardlayer3" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="550" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="550"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Hazardlayer3" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="225" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="Hazardlayer3" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="Hazardlayer3"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="135"/>
+      <Option name="component_pos_y" type="double" value="225"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="Hazardlayer3"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="Hazardlayer4" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="550" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="550"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Hazardlayer4" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="285" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="Hazardlayer4" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="Hazardlayer4"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="135"/>
+      <Option name="component_pos_y" type="double" value="285"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="Hazardlayer4"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="Hazardlayer5" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="550" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="550"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Hazardlayer5" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="345" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="Hazardlayer5" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="Hazardlayer5"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="135"/>
+      <Option name="component_pos_y" type="double" value="345"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="Hazardlayer5"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="Hazardlayer6" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="550" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="550"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Hazardlayer6" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="405" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="Hazardlayer6" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="Hazardlayer6"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="135"/>
+      <Option name="component_pos_y" type="double" value="405"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="Hazardlayer6"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="Numberofriskstocompute" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="550" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="550"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Numberofriskstocompute" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="45" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="Numberofriskstocompute" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="Numberofriskstocompute"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="135"/>
+      <Option name="component_pos_y" type="double" value="45"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="Numberofriskstocompute"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="Schools" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="795" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="795"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Schools" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="465" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="Schools" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="Schools"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="135"/>
+      <Option name="component_pos_y" type="double" value="465"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="Schools"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="Studyarea" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="795" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="795"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="Studyarea" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="525" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="Studyarea" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="Studyarea"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="135"/>
+      <Option name="component_pos_y" type="double" value="525"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="Studyarea"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="WeightforHazardlayer1" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="550" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="550"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="WeightforHazardlayer1" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="375" type="double"/>
-      <Option name="component_pos_y" value="135" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="WeightforHazardlayer1" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="WeightforHazardlayer1"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="375"/>
+      <Option name="component_pos_y" type="double" value="135"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer1"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="WeightforHazardlayer2" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="760" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="760"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="WeightforHazardlayer2" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="375" type="double"/>
-      <Option name="component_pos_y" value="195" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="WeightforHazardlayer2" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="WeightforHazardlayer2"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="375"/>
+      <Option name="component_pos_y" type="double" value="195"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer2"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="WeightforHazardlayer3" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="760" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="760"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="WeightforHazardlayer3" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="375" type="double"/>
-      <Option name="component_pos_y" value="255" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="WeightforHazardlayer3" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="WeightforHazardlayer3"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="375"/>
+      <Option name="component_pos_y" type="double" value="255"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer3"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="WeightforHazardlayer4" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="760" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="760"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="WeightforHazardlayer4" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="375" type="double"/>
-      <Option name="component_pos_y" value="315" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="WeightforHazardlayer4" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="WeightforHazardlayer4"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="375"/>
+      <Option name="component_pos_y" type="double" value="315"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer4"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="WeightforHazardlayer5" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="760" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="760"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="WeightforHazardlayer5" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="375" type="double"/>
-      <Option name="component_pos_y" value="375" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="WeightforHazardlayer5" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="WeightforHazardlayer5"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="375"/>
+      <Option name="component_pos_y" type="double" value="375"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer5"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
     <Option name="WeightforHazardlayer6" type="Map">
-      <Option name="color" value="" type="QString"/>
+      <Option name="color" type="QString" value=""/>
       <Option name="comment" type="Map">
-        <Option name="color" value="" type="QString"/>
-        <Option name="component_description" value="" type="QString"/>
-        <Option name="component_height" value="60" type="double"/>
-        <Option name="component_pos_x" value="760" type="double"/>
-        <Option name="component_pos_y" value="15" type="double"/>
-        <Option name="component_width" value="100" type="double"/>
-        <Option name="outputs_collapsed" value="true" type="bool"/>
-        <Option name="parameters_collapsed" value="true" type="bool"/>
+        <Option name="color" type="QString" value=""/>
+        <Option name="component_description" type="QString" value=""/>
+        <Option name="component_height" type="double" value="60"/>
+        <Option name="component_pos_x" type="double" value="760"/>
+        <Option name="component_pos_y" type="double" value="15"/>
+        <Option name="component_width" type="double" value="100"/>
+        <Option name="outputs_collapsed" type="bool" value="true"/>
+        <Option name="parameters_collapsed" type="bool" value="true"/>
       </Option>
-      <Option name="component_description" value="WeightforHazardlayer6" type="QString"/>
-      <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="375" type="double"/>
-      <Option name="component_pos_y" value="435" type="double"/>
-      <Option name="component_width" value="210" type="double"/>
-      <Option name="name" value="WeightforHazardlayer6" type="QString"/>
-      <Option name="outputs_collapsed" value="true" type="bool"/>
-      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="component_description" type="QString" value="WeightforHazardlayer6"/>
+      <Option name="component_height" type="double" value="30"/>
+      <Option name="component_pos_x" type="double" value="375"/>
+      <Option name="component_pos_y" type="double" value="435"/>
+      <Option name="component_width" type="double" value="210"/>
+      <Option name="name" type="QString" value="WeightforHazardlayer6"/>
+      <Option name="outputs_collapsed" type="bool" value="true"/>
+      <Option name="parameters_collapsed" type="bool" value="true"/>
     </Option>
   </Option>
 </Option>
