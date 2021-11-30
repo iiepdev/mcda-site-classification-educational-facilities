@@ -19,7 +19,7 @@
       <Option name="component_description" value="Clip raster by mask layer" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="1030" type="double"/>
-      <Option name="component_pos_y" value="435" type="double"/>
+      <Option name="component_pos_y" value="495" type="double"/>
       <Option name="component_width" value="200" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="gdal:cliprasterbymasklayer_1" type="QString"/>
@@ -40,7 +40,7 @@
           <Option name="component_description" value="Economic suitability" type="QString"/>
           <Option name="component_height" value="30" type="double"/>
           <Option name="component_pos_x" value="1030" type="double"/>
-          <Option name="component_pos_y" value="495" type="double"/>
+          <Option name="component_pos_y" value="555" type="double"/>
           <Option name="component_width" value="200" type="double"/>
           <Option name="default_value" type="invalid"/>
           <Option name="mandatory" value="false" type="bool"/>
@@ -165,7 +165,7 @@
       <Option name="component_description" value="Merge" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="1030" type="double"/>
-      <Option name="component_pos_y" value="315" type="double"/>
+      <Option name="component_pos_y" value="375" type="double"/>
       <Option name="component_width" value="200" type="double"/>
       <Option name="dependencies" type="List">
         <Option type="Map">
@@ -250,7 +250,7 @@
       <Option name="component_description" value="Road Proximity" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="765" type="double"/>
-      <Option name="component_pos_y" value="285" type="double"/>
+      <Option name="component_pos_y" value="345" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="gdal:proximity_1" type="QString"/>
@@ -339,7 +339,7 @@
       <Option name="component_description" value="Water Proximity" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="765" type="double"/>
-      <Option name="component_pos_y" value="555" type="double"/>
+      <Option name="component_pos_y" value="585" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="gdal:proximity_2" type="QString"/>
@@ -428,7 +428,7 @@
       <Option name="component_description" value="Raster calculator" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="1030" type="double"/>
-      <Option name="component_pos_y" value="375" type="double"/>
+      <Option name="component_pos_y" value="435" type="double"/>
       <Option name="component_width" value="200" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="gdal:rastercalculator_1" type="QString"/>
@@ -480,8 +480,8 @@
         </Option>
         <Option name="FORMULA" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="(A + B)/2" type="QString"/>
+            <Option name="expression" value="concat('A*', to_string(@WeightforRoads),' + B*',to_string( @WeightforWaterways ))" type="QString"/>
+            <Option name="source" value="3" type="int"/>
           </Option>
         </Option>
         <Option name="INPUT_A" type="List">
@@ -560,7 +560,7 @@
       <Option name="component_description" value="Road classification" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="765" type="double"/>
-      <Option name="component_pos_y" value="345" type="double"/>
+      <Option name="component_pos_y" value="405" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="gdal:rastercalculator_2" type="QString"/>
@@ -612,8 +612,8 @@
         </Option>
         <Option name="FORMULA" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="4*(A >= 500) + 3*(A&lt;500)*(A>=300) + 2*(A&lt;300)*(A>=150) + 1*(A&lt;150)" type="QString"/>
+            <Option name="expression" value="concat('4*(A >=',to_string( @MaxRoadDistance ),' ) + 3*(A&lt;',to_string( @MaxRoadDistance),')*(A>=',to_string( @MaxRoadDistance*2/3 ),') + 2*(A&lt;',to_string( @MaxRoadDistance*2/3 ),')*(A>=',to_string( @MaxRoadDistance*1/3 ),') + 1*(A&lt;',to_string( @MaxRoadDistance*1/3 ),')*(A>=', to_string(@Minimumsuitabledistancetotheroad) ,') + 4*(A&lt;',to_string( @Minimumsuitabledistancetotheroad ),')')" type="QString"/>
+            <Option name="source" value="3" type="int"/>
           </Option>
         </Option>
         <Option name="INPUT_A" type="List">
@@ -691,7 +691,7 @@
       <Option name="component_description" value="Water classification" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="765" type="double"/>
-      <Option name="component_pos_y" value="615" type="double"/>
+      <Option name="component_pos_y" value="645" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="gdal:rastercalculator_3" type="QString"/>
@@ -743,8 +743,8 @@
         </Option>
         <Option name="FORMULA" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="1*(A>=500) + 2*(A&lt;500)*(A>=300) + 3*(A&lt;300)*(A>=150) + 4*(A&lt;150)" type="QString"/>
+            <Option name="expression" value="CASE&#xd;&#xa;WHEN  @Arelocationsclosetowaterwaysmoresuitable = TRUE THEN&#xd;&#xa;concat('4*(A >=',to_string( @MaxWaterDistance ),' ) + 3*(A&lt;',to_string( @MaxWaterDistance),')*(A>=',to_string( @MaxWaterDistance*2/3 ),') + 2*(A&lt;',to_string( @MaxWaterDistance*2/3 ),')*(A>=',to_string( @MaxWaterDistance*1/3 ),') + 1*(A&lt;',to_string( @MaxWaterDistance*1/3 ),')*(A>=', to_string(@Minimumsuitabledistancetoawaterway) ,') + 4*(A&lt;',to_string( @Minimumsuitabledistancetoawaterway ),')')   &#xd;&#xa;ELSE &#xd;&#xa;concat('4*(A >=',to_string( @MaxWaterDistance ),' ) + 1*(A&lt;',to_string( @MaxWaterDistance),')*(A>=',to_string( @MaxWaterDistance*2/3 ),') + 2*(A&lt;',to_string( @MaxWaterDistance*2/3 ),')*(A>=',to_string( @MaxWaterDistance*1/3 ),') + 3*(A&lt;',to_string( @MaxWaterDistance*1/3 ),')*(A>=', to_string(@Minimumsuitabledistancetoawaterway) ,') + 4*(A&lt;',to_string( @Minimumsuitabledistancetoawaterway ),')')    &#xd;&#xa;END " type="QString"/>
+            <Option name="source" value="3" type="int"/>
           </Option>
         </Option>
         <Option name="INPUT_A" type="List">
@@ -822,9 +822,14 @@
       <Option name="component_description" value="Rasterize (vector to raster) - Roads" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="495" type="double"/>
-      <Option name="component_pos_y" value="345" type="double"/>
+      <Option name="component_pos_y" value="405" type="double"/>
       <Option name="component_width" value="210" type="double"/>
-      <Option name="dependencies"/>
+      <Option name="dependencies" type="List">
+        <Option type="Map">
+          <Option name="child_id" value="native:fixgeometries_3" type="QString"/>
+          <Option name="conditional_branch" value="" type="QString"/>
+        </Option>
+      </Option>
       <Option name="id" value="gdal:rasterize_1" type="QString"/>
       <Option name="outputs"/>
       <Option name="outputs_collapsed" value="true" type="bool"/>
@@ -844,7 +849,7 @@
         </Option>
         <Option name="EXTENT" type="List">
           <Option type="Map">
-            <Option name="expression" value="concat(   @Fix_geometries_OUTPUT_minx ,',', @Fix_geometries_OUTPUT_maxx ,',', @Fix_geometries_OUTPUT_miny ,',', @Fix_geometries_OUTPUT_maxy  ) " type="QString"/>
+            <Option name="expression" value="concat(  @Fix_geometries_OUTPUT_minx  ,',',  @Fix_geometries_OUTPUT_maxx  ,',',  @Fix_geometries_OUTPUT_miny  ,',',  @Fix_geometries_OUTPUT_maxy  ) " type="QString"/>
             <Option name="source" value="3" type="int"/>
           </Option>
         </Option>
@@ -935,9 +940,14 @@
       <Option name="component_description" value="Rasterize (vector to raster) - Waterways" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="495" type="double"/>
-      <Option name="component_pos_y" value="615" type="double"/>
+      <Option name="component_pos_y" value="645" type="double"/>
       <Option name="component_width" value="210" type="double"/>
-      <Option name="dependencies"/>
+      <Option name="dependencies" type="List">
+        <Option type="Map">
+          <Option name="child_id" value="native:fixgeometries_3" type="QString"/>
+          <Option name="conditional_branch" value="" type="QString"/>
+        </Option>
+      </Option>
       <Option name="id" value="gdal:rasterize_2" type="QString"/>
       <Option name="outputs"/>
       <Option name="outputs_collapsed" value="true" type="bool"/>
@@ -957,7 +967,7 @@
         </Option>
         <Option name="EXTENT" type="List">
           <Option type="Map">
-            <Option name="expression" value="concat(   @Fix_geometries_OUTPUT_minx ,',', @Fix_geometries_OUTPUT_maxx ,',', @Fix_geometries_OUTPUT_miny ,',', @Fix_geometries_OUTPUT_maxy  ) " type="QString"/>
+            <Option name="expression" value="concat(  @Fix_geometries_OUTPUT_minx  ,',',  @Fix_geometries_OUTPUT_maxx  ,',',  @Fix_geometries_OUTPUT_miny  ,',',  @Fix_geometries_OUTPUT_maxy  ) " type="QString"/>
             <Option name="source" value="3" type="int"/>
           </Option>
         </Option>
@@ -1048,7 +1058,7 @@
       <Option name="component_description" value="Clip roads" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="495" type="double"/>
-      <Option name="component_pos_y" value="225" type="double"/>
+      <Option name="component_pos_y" value="285" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="native:clip_1" type="QString"/>
@@ -1090,7 +1100,7 @@
       <Option name="component_description" value="Clip waterways" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="495" type="double"/>
-      <Option name="component_pos_y" value="495" type="double"/>
+      <Option name="component_pos_y" value="525" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="native:clip_2" type="QString"/>
@@ -1166,7 +1176,7 @@
       <Option name="component_description" value="Fix waterways geometries" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="495" type="double"/>
-      <Option name="component_pos_y" value="435" type="double"/>
+      <Option name="component_pos_y" value="465" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="native:fixgeometries_1" type="QString"/>
@@ -1200,7 +1210,7 @@
       <Option name="component_description" value="Fix roads geometries" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="495" type="double"/>
-      <Option name="component_pos_y" value="165" type="double"/>
+      <Option name="component_pos_y" value="225" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="native:fixgeometries_2" type="QString"/>
@@ -1234,7 +1244,7 @@
       <Option name="component_description" value="Fix geometries" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="495" type="double"/>
-      <Option name="component_pos_y" value="105" type="double"/>
+      <Option name="component_pos_y" value="165" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="native:fixgeometries_3" type="QString"/>
@@ -1244,7 +1254,7 @@
       <Option name="params" type="Map">
         <Option name="INPUT" type="List">
           <Option type="Map">
-            <Option name="child_id" value="native:createspatialindex_1" type="QString"/>
+            <Option name="child_id" value="native:reprojectlayer_3" type="QString"/>
             <Option name="output_name" value="OUTPUT" type="QString"/>
             <Option name="source" value="1" type="int"/>
           </Option>
@@ -1269,7 +1279,7 @@
       <Option name="component_description" value="Reproject layer - Roads" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="495" type="double"/>
-      <Option name="component_pos_y" value="285" type="double"/>
+      <Option name="component_pos_y" value="345" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="native:reprojectlayer_1" type="QString"/>
@@ -1316,7 +1326,7 @@
       <Option name="component_description" value="Reproject layer - Waterways" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="495" type="double"/>
-      <Option name="component_pos_y" value="555" type="double"/>
+      <Option name="component_pos_y" value="585" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="native:reprojectlayer_2" type="QString"/>
@@ -1327,6 +1337,53 @@
         <Option name="INPUT" type="List">
           <Option type="Map">
             <Option name="child_id" value="native:clip_2" type="QString"/>
+            <Option name="output_name" value="OUTPUT" type="QString"/>
+            <Option name="source" value="1" type="int"/>
+          </Option>
+        </Option>
+        <Option name="OPERATION" type="List">
+          <Option type="Map">
+            <Option name="source" value="2" type="int"/>
+            <Option name="static_value" value="" type="QString"/>
+          </Option>
+        </Option>
+        <Option name="TARGET_CRS" type="List">
+          <Option type="Map">
+            <Option name="parameter_name" value="CRS" type="QString"/>
+            <Option name="source" value="0" type="int"/>
+          </Option>
+        </Option>
+      </Option>
+    </Option>
+    <Option name="native:reprojectlayer_3" type="Map">
+      <Option name="active" value="true" type="bool"/>
+      <Option name="alg_config"/>
+      <Option name="alg_id" value="native:reprojectlayer" type="QString"/>
+      <Option name="color" value="" type="QString"/>
+      <Option name="comment" type="Map">
+        <Option name="color" value="" type="QString"/>
+        <Option name="component_description" value="" type="QString"/>
+        <Option name="component_height" value="60" type="double"/>
+        <Option name="component_pos_x" value="1450" type="double"/>
+        <Option name="component_pos_y" value="730" type="double"/>
+        <Option name="component_width" value="100" type="double"/>
+        <Option name="outputs_collapsed" value="true" type="bool"/>
+        <Option name="parameters_collapsed" value="true" type="bool"/>
+      </Option>
+      <Option name="component_description" value="Reproject layer" type="QString"/>
+      <Option name="component_height" value="30" type="double"/>
+      <Option name="component_pos_x" value="495" type="double"/>
+      <Option name="component_pos_y" value="105" type="double"/>
+      <Option name="component_width" value="210" type="double"/>
+      <Option name="dependencies"/>
+      <Option name="id" value="native:reprojectlayer_3" type="QString"/>
+      <Option name="outputs"/>
+      <Option name="outputs_collapsed" value="true" type="bool"/>
+      <Option name="parameters_collapsed" value="true" type="bool"/>
+      <Option name="params" type="Map">
+        <Option name="INPUT" type="List">
+          <Option type="Map">
+            <Option name="child_id" value="native:createspatialindex_1" type="QString"/>
             <Option name="output_name" value="OUTPUT" type="QString"/>
             <Option name="source" value="1" type="int"/>
           </Option>
@@ -1360,6 +1417,7 @@
         <geographicflag>false</geographicflag>
       </spatialrefsys>
     </Option>
+    <Option name="MaxRoadDistance" value="1000" type="double"/>
     <Option name="Roads" value="Roads_89557711_1f66_4a14_a1e6_fb15094d0589" type="QString"/>
     <Option name="SiteAreavector" value="AcehProvinceIndonesia_863de58d_e90e_4c89_946f_c682a4c3e2e3" type="QString"/>
     <Option name="Waterways" value="PartB_ea3d4697_c057_4580_a5d6_b757eeeb1df7" type="QString"/>
@@ -1375,41 +1433,36 @@
         </Option>
       </Option>
     </Option>
-    <Option name="gdal:rastercalculator_2:Road classification" type="QgsProcessingOutputLayerDefinition">
-      <Option type="Map">
-        <Option name="create_options" type="Map">
-          <Option name="fileEncoding" value="System" type="QString"/>
-        </Option>
-        <Option name="sink" type="Map">
-          <Option name="active" value="true" type="bool"/>
-          <Option name="type" value="1" type="int"/>
-          <Option name="val" value="TEMPORARY_OUTPUT" type="QString"/>
-        </Option>
-      </Option>
-    </Option>
-    <Option name="gdal:rastercalculator_3:Water classification" type="QgsProcessingOutputLayerDefinition">
-      <Option type="Map">
-        <Option name="create_options" type="Map">
-          <Option name="fileEncoding" value="System" type="QString"/>
-        </Option>
-        <Option name="sink" type="Map">
-          <Option name="active" value="true" type="bool"/>
-          <Option name="type" value="1" type="int"/>
-          <Option name="val" value="TEMPORARY_OUTPUT" type="QString"/>
-        </Option>
-      </Option>
-    </Option>
   </Option>
   <Option name="groupBoxes"/>
-  <Option name="help"/>
+  <Option name="help" type="Map">
+    <Option name="ALG_CREATOR" value="Development team (development@iiep.unesco.org)" type="QString"/>
+    <Option name="ALG_DESC" value="" type="QString"/>
+    <Option name="ALG_HELP_CREATOR" value="Development team (development@iiep.unesco.org)" type="QString"/>
+    <Option name="ALG_VERSION" value="1.0" type="QString"/>
+    <Option name="HELP_URL" value="https://github.com/iiepdev/mcda-site-classification-educational-facilities" type="QString"/>
+    <Option name="WeightforRoads" value="Make sure that the sum of &quot;Weight for Roads&quot; and &quot;Weight for Waterways&quot; is equal to 1." type="QString"/>
+    <Option name="WeightforWaterways" value="Make sure that the sum of &quot;Weight for Roads&quot; and &quot;Weight for Waterways&quot; is equal to 1." type="QString"/>
+    <Option name="gdal:cliprasterbymasklayer_1:Economic suitability" value="" type="QString"/>
+  </Option>
   <Option name="modelVariables"/>
   <Option name="model_group" value="Multi-criteria decision analysis" type="QString"/>
   <Option name="model_name" value="Economic suitability" type="QString"/>
   <Option name="parameterDefinitions" type="Map">
+    <Option name="Arelocationsclosetowaterwaysmoresuitable" type="Map">
+      <Option name="default" value="false" type="bool"/>
+      <Option name="defaultGui" type="invalid"/>
+      <Option name="description" value="Are locations close to waterways more suitable than locations further away from waterways?" type="QString"/>
+      <Option name="flags" value="0" type="int"/>
+      <Option name="help" value="" type="QString"/>
+      <Option name="metadata"/>
+      <Option name="name" value="Arelocationsclosetowaterwaysmoresuitable" type="QString"/>
+      <Option name="parameter_type" value="boolean" type="QString"/>
+    </Option>
     <Option name="CRS" type="Map">
       <Option name="default" value="EPSG:4326" type="QString"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="CRS" type="QString"/>
+      <Option name="description" value="Projected reference system" type="QString"/>
       <Option name="flags" value="0" type="int"/>
       <Option name="help" value="" type="QString"/>
       <Option name="metadata"/>
@@ -1420,7 +1473,7 @@
       <Option name="data_type" value="1" type="int"/>
       <Option name="default" value="500" type="double"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Max Road Distance" type="QString"/>
+      <Option name="description" value="Maximum suitable distance to a road" type="QString"/>
       <Option name="flags" value="0" type="int"/>
       <Option name="help" value="" type="QString"/>
       <Option name="max" value="1.79769e+308" type="double"/>
@@ -1433,13 +1486,39 @@
       <Option name="data_type" value="1" type="int"/>
       <Option name="default" value="500" type="double"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Max Water Distance" type="QString"/>
+      <Option name="description" value="Maximum suitable distance to a waterway" type="QString"/>
+      <Option name="flags" value="0" type="int"/>
+      <Option name="help" value="" type="QString"/>
+      <Option name="max" value="1.79769e+308" type="double"/>
+      <Option name="metadata"/>
+      <Option name="min" value="0" type="double"/>
+      <Option name="name" value="MaxWaterDistance" type="QString"/>
+      <Option name="parameter_type" value="number" type="QString"/>
+    </Option>
+    <Option name="Minimumsuitabledistancetoawaterway" type="Map">
+      <Option name="data_type" value="1" type="int"/>
+      <Option name="default" type="invalid"/>
+      <Option name="defaultGui" type="invalid"/>
+      <Option name="description" value="Minimum suitable distance to a waterway" type="QString"/>
       <Option name="flags" value="0" type="int"/>
       <Option name="help" value="" type="QString"/>
       <Option name="max" value="1.7976931348623157e+308" type="double"/>
       <Option name="metadata"/>
-      <Option name="min" value="-1.7976931348623157e+308" type="double"/>
-      <Option name="name" value="MaxWaterDistance" type="QString"/>
+      <Option name="min" value="0" type="double"/>
+      <Option name="name" value="Minimumsuitabledistancetoawaterway" type="QString"/>
+      <Option name="parameter_type" value="number" type="QString"/>
+    </Option>
+    <Option name="Minimumsuitabledistancetotheroad" type="Map">
+      <Option name="data_type" value="0" type="int"/>
+      <Option name="default" type="invalid"/>
+      <Option name="defaultGui" type="invalid"/>
+      <Option name="description" value="Minimum suitable distance to the road" type="QString"/>
+      <Option name="flags" value="0" type="int"/>
+      <Option name="help" value="" type="QString"/>
+      <Option name="max" value="1.7976931348623157e+308" type="double"/>
+      <Option name="metadata"/>
+      <Option name="min" value="0" type="double"/>
+      <Option name="name" value="Minimumsuitabledistancetotheroad" type="QString"/>
       <Option name="parameter_type" value="number" type="QString"/>
     </Option>
     <Option name="Roads" type="Map">
@@ -1461,7 +1540,7 @@
       </Option>
       <Option name="default" type="invalid"/>
       <Option name="defaultGui" type="invalid"/>
-      <Option name="description" value="Site Area (vector)" type="QString"/>
+      <Option name="description" value="Area of analysis" type="QString"/>
       <Option name="flags" value="0" type="int"/>
       <Option name="help" value="" type="QString"/>
       <Option name="metadata"/>
@@ -1481,6 +1560,32 @@
       <Option name="name" value="Waterways" type="QString"/>
       <Option name="parameter_type" value="vector" type="QString"/>
     </Option>
+    <Option name="WeightforRoads" type="Map">
+      <Option name="data_type" value="1" type="int"/>
+      <Option name="default" value="0.5" type="double"/>
+      <Option name="defaultGui" type="invalid"/>
+      <Option name="description" value="Weight for the road sub-component" type="QString"/>
+      <Option name="flags" value="0" type="int"/>
+      <Option name="help" value="Make sure that the sum of &quot;Weight for Roads&quot; and &quot;Weight for Waterways&quot; is equal to 1." type="QString"/>
+      <Option name="max" value="1" type="double"/>
+      <Option name="metadata"/>
+      <Option name="min" value="0" type="double"/>
+      <Option name="name" value="WeightforRoads" type="QString"/>
+      <Option name="parameter_type" value="number" type="QString"/>
+    </Option>
+    <Option name="WeightforWaterways" type="Map">
+      <Option name="data_type" value="1" type="int"/>
+      <Option name="default" value="0.5" type="double"/>
+      <Option name="defaultGui" type="invalid"/>
+      <Option name="description" value="Weight for the waterways sub-component" type="QString"/>
+      <Option name="flags" value="0" type="int"/>
+      <Option name="help" value="Make sure that the sum of &quot;Weight for Roads&quot; and &quot;Weight for Waterways&quot; is equal to 1." type="QString"/>
+      <Option name="max" value="1" type="double"/>
+      <Option name="metadata"/>
+      <Option name="min" value="0" type="double"/>
+      <Option name="name" value="WeightforWaterways" type="QString"/>
+      <Option name="parameter_type" value="number" type="QString"/>
+    </Option>
     <Option name="gdal:cliprasterbymasklayer_1:Economic suitability" type="Map">
       <Option name="create_by_default" value="true" type="bool"/>
       <Option name="default" type="invalid"/>
@@ -1497,12 +1602,38 @@
   <Option name="parameterOrder" type="StringList">
     <Option value="Roads" type="QString"/>
     <Option value="MaxRoadDistance" type="QString"/>
+    <Option value="Minimumsuitabledistancetotheroad" type="QString"/>
+    <Option value="WeightforRoads" type="QString"/>
     <Option value="Waterways" type="QString"/>
     <Option value="MaxWaterDistance" type="QString"/>
+    <Option value="Minimumsuitabledistancetoawaterway" type="QString"/>
+    <Option value="Arelocationsclosetowaterwaysmoresuitable" type="QString"/>
+    <Option value="WeightforWaterways" type="QString"/>
     <Option value="SiteAreavector" type="QString"/>
     <Option value="CRS" type="QString"/>
   </Option>
   <Option name="parameters" type="Map">
+    <Option name="Arelocationsclosetowaterwaysmoresuitable" type="Map">
+      <Option name="color" value="" type="QString"/>
+      <Option name="comment" type="Map">
+        <Option name="color" value="" type="QString"/>
+        <Option name="component_description" value="" type="QString"/>
+        <Option name="component_height" value="60" type="double"/>
+        <Option name="component_pos_x" value="555" type="double"/>
+        <Option name="component_pos_y" value="15" type="double"/>
+        <Option name="component_width" value="100" type="double"/>
+        <Option name="outputs_collapsed" value="true" type="bool"/>
+        <Option name="parameters_collapsed" value="true" type="bool"/>
+      </Option>
+      <Option name="component_description" value="Arelocationsclosetowaterwaysmoresuitable" type="QString"/>
+      <Option name="component_height" value="30" type="double"/>
+      <Option name="component_pos_x" value="135" type="double"/>
+      <Option name="component_pos_y" value="645" type="double"/>
+      <Option name="component_width" value="210" type="double"/>
+      <Option name="name" value="Arelocationsclosetowaterwaysmoresuitable" type="QString"/>
+      <Option name="outputs_collapsed" value="true" type="bool"/>
+      <Option name="parameters_collapsed" value="true" type="bool"/>
+    </Option>
     <Option name="CRS" type="Map">
       <Option name="color" value="" type="QString"/>
       <Option name="comment" type="Map">
@@ -1539,7 +1670,7 @@
       <Option name="component_description" value="MaxRoadDistance" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="255" type="double"/>
+      <Option name="component_pos_y" value="225" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="name" value="MaxRoadDistance" type="QString"/>
       <Option name="outputs_collapsed" value="true" type="bool"/>
@@ -1560,9 +1691,51 @@
       <Option name="component_description" value="MaxWaterDistance" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="495" type="double"/>
+      <Option name="component_pos_y" value="465" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="name" value="MaxWaterDistance" type="QString"/>
+      <Option name="outputs_collapsed" value="true" type="bool"/>
+      <Option name="parameters_collapsed" value="true" type="bool"/>
+    </Option>
+    <Option name="Minimumsuitabledistancetoawaterway" type="Map">
+      <Option name="color" value="" type="QString"/>
+      <Option name="comment" type="Map">
+        <Option name="color" value="" type="QString"/>
+        <Option name="component_description" value="" type="QString"/>
+        <Option name="component_height" value="60" type="double"/>
+        <Option name="component_pos_x" value="555" type="double"/>
+        <Option name="component_pos_y" value="15" type="double"/>
+        <Option name="component_width" value="100" type="double"/>
+        <Option name="outputs_collapsed" value="true" type="bool"/>
+        <Option name="parameters_collapsed" value="true" type="bool"/>
+      </Option>
+      <Option name="component_description" value="Minimumsuitabledistancetoawaterway" type="QString"/>
+      <Option name="component_height" value="30" type="double"/>
+      <Option name="component_pos_x" value="135" type="double"/>
+      <Option name="component_pos_y" value="525" type="double"/>
+      <Option name="component_width" value="210" type="double"/>
+      <Option name="name" value="Minimumsuitabledistancetoawaterway" type="QString"/>
+      <Option name="outputs_collapsed" value="true" type="bool"/>
+      <Option name="parameters_collapsed" value="true" type="bool"/>
+    </Option>
+    <Option name="Minimumsuitabledistancetotheroad" type="Map">
+      <Option name="color" value="" type="QString"/>
+      <Option name="comment" type="Map">
+        <Option name="color" value="" type="QString"/>
+        <Option name="component_description" value="" type="QString"/>
+        <Option name="component_height" value="60" type="double"/>
+        <Option name="component_pos_x" value="555" type="double"/>
+        <Option name="component_pos_y" value="15" type="double"/>
+        <Option name="component_width" value="100" type="double"/>
+        <Option name="outputs_collapsed" value="true" type="bool"/>
+        <Option name="parameters_collapsed" value="true" type="bool"/>
+      </Option>
+      <Option name="component_description" value="Minimumsuitabledistancetotheroad" type="QString"/>
+      <Option name="component_height" value="30" type="double"/>
+      <Option name="component_pos_x" value="135" type="double"/>
+      <Option name="component_pos_y" value="285" type="double"/>
+      <Option name="component_width" value="210" type="double"/>
+      <Option name="name" value="Minimumsuitabledistancetotheroad" type="QString"/>
       <Option name="outputs_collapsed" value="true" type="bool"/>
       <Option name="parameters_collapsed" value="true" type="bool"/>
     </Option>
@@ -1581,7 +1754,7 @@
       <Option name="component_description" value="Roads" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="195" type="double"/>
+      <Option name="component_pos_y" value="165" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="name" value="Roads" type="QString"/>
       <Option name="outputs_collapsed" value="true" type="bool"/>
@@ -1623,9 +1796,51 @@
       <Option name="component_description" value="Waterways" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="435" type="double"/>
+      <Option name="component_pos_y" value="405" type="double"/>
       <Option name="component_width" value="210" type="double"/>
       <Option name="name" value="Waterways" type="QString"/>
+      <Option name="outputs_collapsed" value="true" type="bool"/>
+      <Option name="parameters_collapsed" value="true" type="bool"/>
+    </Option>
+    <Option name="WeightforRoads" type="Map">
+      <Option name="color" value="" type="QString"/>
+      <Option name="comment" type="Map">
+        <Option name="color" value="" type="QString"/>
+        <Option name="component_description" value="" type="QString"/>
+        <Option name="component_height" value="60" type="double"/>
+        <Option name="component_pos_x" value="555" type="double"/>
+        <Option name="component_pos_y" value="15" type="double"/>
+        <Option name="component_width" value="100" type="double"/>
+        <Option name="outputs_collapsed" value="true" type="bool"/>
+        <Option name="parameters_collapsed" value="true" type="bool"/>
+      </Option>
+      <Option name="component_description" value="WeightforRoads" type="QString"/>
+      <Option name="component_height" value="30" type="double"/>
+      <Option name="component_pos_x" value="135" type="double"/>
+      <Option name="component_pos_y" value="345" type="double"/>
+      <Option name="component_width" value="210" type="double"/>
+      <Option name="name" value="WeightforRoads" type="QString"/>
+      <Option name="outputs_collapsed" value="true" type="bool"/>
+      <Option name="parameters_collapsed" value="true" type="bool"/>
+    </Option>
+    <Option name="WeightforWaterways" type="Map">
+      <Option name="color" value="" type="QString"/>
+      <Option name="comment" type="Map">
+        <Option name="color" value="" type="QString"/>
+        <Option name="component_description" value="" type="QString"/>
+        <Option name="component_height" value="60" type="double"/>
+        <Option name="component_pos_x" value="555" type="double"/>
+        <Option name="component_pos_y" value="15" type="double"/>
+        <Option name="component_width" value="100" type="double"/>
+        <Option name="outputs_collapsed" value="true" type="bool"/>
+        <Option name="parameters_collapsed" value="true" type="bool"/>
+      </Option>
+      <Option name="component_description" value="WeightforWaterways" type="QString"/>
+      <Option name="component_height" value="30" type="double"/>
+      <Option name="component_pos_x" value="135" type="double"/>
+      <Option name="component_pos_y" value="585" type="double"/>
+      <Option name="component_width" value="210" type="double"/>
+      <Option name="name" value="WeightforWaterways" type="QString"/>
       <Option name="outputs_collapsed" value="true" type="bool"/>
       <Option name="parameters_collapsed" value="true" type="bool"/>
     </Option>

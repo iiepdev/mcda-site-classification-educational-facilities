@@ -18,8 +18,8 @@
       </Option>
       <Option name="component_description" value="Clip raster by mask layer" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="1150" type="double"/>
-      <Option name="component_pos_y" value="285" type="double"/>
+      <Option name="component_pos_x" value="910" type="double"/>
+      <Option name="component_pos_y" value="195" type="double"/>
       <Option name="component_width" value="200" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="gdal:cliprasterbymasklayer_1" type="QString"/>
@@ -39,8 +39,8 @@
           </Option>
           <Option name="component_description" value="Environmental suitability" type="QString"/>
           <Option name="component_height" value="30" type="double"/>
-          <Option name="component_pos_x" value="1150" type="double"/>
-          <Option name="component_pos_y" value="345" type="double"/>
+          <Option name="component_pos_x" value="910" type="double"/>
+          <Option name="component_pos_y" value="255" type="double"/>
           <Option name="component_width" value="200" type="double"/>
           <Option name="default_value" type="invalid"/>
           <Option name="mandatory" value="false" type="bool"/>
@@ -164,8 +164,8 @@
       </Option>
       <Option name="component_description" value="Merge" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="1150" type="double"/>
-      <Option name="component_pos_y" value="165" type="double"/>
+      <Option name="component_pos_x" value="910" type="double"/>
+      <Option name="component_pos_y" value="75" type="double"/>
       <Option name="component_width" value="200" type="double"/>
       <Option name="dependencies" type="List">
         <Option type="Map">
@@ -307,7 +307,7 @@
         <Option name="FORMULA" type="List">
           <Option type="Map">
             <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="1*(A&lt;=0.25) + 2*(A>0.25)*(A&lt;=0.5) + 3*(A>0.5)*(A&lt;=0.75) + 4*(A>0.75)" type="QString"/>
+            <Option name="static_value" value="1*(A&lt;=1) + 2*(A>1)*(A&lt;=2) + 3*(A>2)*(A&lt;=3) + 4*(A>3)" type="QString"/>
           </Option>
         </Option>
         <Option name="INPUT_A" type="List">
@@ -384,8 +384,8 @@
       </Option>
       <Option name="component_description" value="Raster calculator" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
-      <Option name="component_pos_x" value="1150" type="double"/>
-      <Option name="component_pos_y" value="225" type="double"/>
+      <Option name="component_pos_x" value="910" type="double"/>
+      <Option name="component_pos_y" value="135" type="double"/>
       <Option name="component_width" value="200" type="double"/>
       <Option name="dependencies"/>
       <Option name="id" value="gdal:rastercalculator_2" type="QString"/>
@@ -437,8 +437,8 @@
         </Option>
         <Option name="FORMULA" type="List">
           <Option type="Map">
-            <Option name="source" value="2" type="int"/>
-            <Option name="static_value" value="(A+B+C)/3" type="QString"/>
+            <Option name="expression" value="concat('A*', to_string(@WeightforVegetation) ,' + B*', to_string(@WeightforMultiHazardRisk) ,' + C*',  to_string(@WeightforElevation) )" type="QString"/>
+            <Option name="source" value="3" type="int"/>
           </Option>
         </Option>
         <Option name="INPUT_A" type="List">
@@ -1234,46 +1234,10 @@
       </spatialrefsys>
     </Option>
     <Option name="DigitalElevationModel" value="DEM_bddd9b35_a80e_43b4_b04e_19ab3d2717f1" type="QString"/>
-    <Option name="ForestVegetationClassifed" value="OUTPUT_a100312c_ad2e_412d_97dd_cbfc682ff938" type="QString"/>
+    <Option name="ForestVegetationClassifed" value="PrimaryForests_WGS_Aceh_603084d4_f751_4b14_bdad_3df43d2ca880" type="QString"/>
     <Option name="MultiHazardRisk" value="Hazard_index_b7252889_7b58_4efc_864e_68c80453cb4f" type="QString"/>
     <Option name="SiteAreavector" value="AcehProvinceIndonesia_863de58d_e90e_4c89_946f_c682a4c3e2e3" type="QString"/>
     <Option name="gdal:cliprasterbymasklayer_1:Environmental suitability" type="QgsProcessingOutputLayerDefinition">
-      <Option type="Map">
-        <Option name="create_options" type="Map">
-          <Option name="fileEncoding" value="System" type="QString"/>
-        </Option>
-        <Option name="sink" type="Map">
-          <Option name="active" value="true" type="bool"/>
-          <Option name="type" value="1" type="int"/>
-          <Option name="val" value="TEMPORARY_OUTPUT" type="QString"/>
-        </Option>
-      </Option>
-    </Option>
-    <Option name="gdal:rastercalculator_1:Hazard classification" type="QgsProcessingOutputLayerDefinition">
-      <Option type="Map">
-        <Option name="create_options" type="Map">
-          <Option name="fileEncoding" value="System" type="QString"/>
-        </Option>
-        <Option name="sink" type="Map">
-          <Option name="active" value="true" type="bool"/>
-          <Option name="type" value="1" type="int"/>
-          <Option name="val" value="TEMPORARY_OUTPUT" type="QString"/>
-        </Option>
-      </Option>
-    </Option>
-    <Option name="gdal:rastercalculator_3:Slope classification" type="QgsProcessingOutputLayerDefinition">
-      <Option type="Map">
-        <Option name="create_options" type="Map">
-          <Option name="fileEncoding" value="System" type="QString"/>
-        </Option>
-        <Option name="sink" type="Map">
-          <Option name="active" value="true" type="bool"/>
-          <Option name="type" value="1" type="int"/>
-          <Option name="val" value="TEMPORARY_OUTPUT" type="QString"/>
-        </Option>
-      </Option>
-    </Option>
-    <Option name="gdal:rastercalculator_4:Forest classification" type="QgsProcessingOutputLayerDefinition">
       <Option type="Map">
         <Option name="create_options" type="Map">
           <Option name="fileEncoding" value="System" type="QString"/>
@@ -1345,6 +1309,45 @@
       <Option name="name" value="SiteAreavector" type="QString"/>
       <Option name="parameter_type" value="vector" type="QString"/>
     </Option>
+    <Option name="WeightforElevation" type="Map">
+      <Option name="data_type" value="1" type="int"/>
+      <Option name="default" value="0.33" type="double"/>
+      <Option name="defaultGui" type="invalid"/>
+      <Option name="description" value="Weight for Elevation" type="QString"/>
+      <Option name="flags" value="0" type="int"/>
+      <Option name="help" value="" type="QString"/>
+      <Option name="max" value="1" type="double"/>
+      <Option name="metadata"/>
+      <Option name="min" value="0" type="double"/>
+      <Option name="name" value="WeightforElevation" type="QString"/>
+      <Option name="parameter_type" value="number" type="QString"/>
+    </Option>
+    <Option name="WeightforMultiHazardRisk" type="Map">
+      <Option name="data_type" value="1" type="int"/>
+      <Option name="default" value="0.33" type="double"/>
+      <Option name="defaultGui" type="invalid"/>
+      <Option name="description" value="Weight for Multi-Hazard Risk" type="QString"/>
+      <Option name="flags" value="0" type="int"/>
+      <Option name="help" value="" type="QString"/>
+      <Option name="max" value="1" type="double"/>
+      <Option name="metadata"/>
+      <Option name="min" value="0" type="double"/>
+      <Option name="name" value="WeightforMultiHazardRisk" type="QString"/>
+      <Option name="parameter_type" value="number" type="QString"/>
+    </Option>
+    <Option name="WeightforVegetation" type="Map">
+      <Option name="data_type" value="1" type="int"/>
+      <Option name="default" value="0.33" type="double"/>
+      <Option name="defaultGui" type="invalid"/>
+      <Option name="description" value="Weight for Vegetation" type="QString"/>
+      <Option name="flags" value="0" type="int"/>
+      <Option name="help" value="" type="QString"/>
+      <Option name="max" value="1" type="double"/>
+      <Option name="metadata"/>
+      <Option name="min" value="0" type="double"/>
+      <Option name="name" value="WeightforVegetation" type="QString"/>
+      <Option name="parameter_type" value="number" type="QString"/>
+    </Option>
     <Option name="gdal:cliprasterbymasklayer_1:Environmental suitability" type="Map">
       <Option name="create_by_default" value="true" type="bool"/>
       <Option name="default" type="invalid"/>
@@ -1358,7 +1361,16 @@
       <Option name="supports_non_file_outputs" value="false" type="bool"/>
     </Option>
   </Option>
-  <Option name="parameterOrder"/>
+  <Option name="parameterOrder" type="StringList">
+    <Option value="CRS" type="QString"/>
+    <Option value="MultiHazardRisk" type="QString"/>
+    <Option value="WeightforMultiHazardRisk" type="QString"/>
+    <Option value="DigitalElevationModel" type="QString"/>
+    <Option value="WeightforElevation" type="QString"/>
+    <Option value="ForestVegetationClassifed" type="QString"/>
+    <Option value="WeightforVegetation" type="QString"/>
+    <Option value="SiteAreavector" type="QString"/>
+  </Option>
   <Option name="parameters" type="Map">
     <Option name="CRS" type="Map">
       <Option name="color" value="" type="QString"/>
@@ -1459,9 +1471,72 @@
       <Option name="component_description" value="SiteAreavector" type="QString"/>
       <Option name="component_height" value="30" type="double"/>
       <Option name="component_pos_x" value="135" type="double"/>
-      <Option name="component_pos_y" value="345" type="double"/>
+      <Option name="component_pos_y" value="285" type="double"/>
       <Option name="component_width" value="210.00000000000003" type="double"/>
       <Option name="name" value="SiteAreavector" type="QString"/>
+      <Option name="outputs_collapsed" value="true" type="bool"/>
+      <Option name="parameters_collapsed" value="true" type="bool"/>
+    </Option>
+    <Option name="WeightforElevation" type="Map">
+      <Option name="color" value="" type="QString"/>
+      <Option name="comment" type="Map">
+        <Option name="color" value="" type="QString"/>
+        <Option name="component_description" value="" type="QString"/>
+        <Option name="component_height" value="60" type="double"/>
+        <Option name="component_pos_x" value="555" type="double"/>
+        <Option name="component_pos_y" value="15" type="double"/>
+        <Option name="component_width" value="100" type="double"/>
+        <Option name="outputs_collapsed" value="true" type="bool"/>
+        <Option name="parameters_collapsed" value="true" type="bool"/>
+      </Option>
+      <Option name="component_description" value="WeightforElevation" type="QString"/>
+      <Option name="component_height" value="30" type="double"/>
+      <Option name="component_pos_x" value="135" type="double"/>
+      <Option name="component_pos_y" value="405" type="double"/>
+      <Option name="component_width" value="210" type="double"/>
+      <Option name="name" value="WeightforElevation" type="QString"/>
+      <Option name="outputs_collapsed" value="true" type="bool"/>
+      <Option name="parameters_collapsed" value="true" type="bool"/>
+    </Option>
+    <Option name="WeightforMultiHazardRisk" type="Map">
+      <Option name="color" value="" type="QString"/>
+      <Option name="comment" type="Map">
+        <Option name="color" value="" type="QString"/>
+        <Option name="component_description" value="" type="QString"/>
+        <Option name="component_height" value="60" type="double"/>
+        <Option name="component_pos_x" value="555" type="double"/>
+        <Option name="component_pos_y" value="15" type="double"/>
+        <Option name="component_width" value="100" type="double"/>
+        <Option name="outputs_collapsed" value="true" type="bool"/>
+        <Option name="parameters_collapsed" value="true" type="bool"/>
+      </Option>
+      <Option name="component_description" value="WeightforMultiHazardRisk" type="QString"/>
+      <Option name="component_height" value="30" type="double"/>
+      <Option name="component_pos_x" value="135" type="double"/>
+      <Option name="component_pos_y" value="345" type="double"/>
+      <Option name="component_width" value="210" type="double"/>
+      <Option name="name" value="WeightforMultiHazardRisk" type="QString"/>
+      <Option name="outputs_collapsed" value="true" type="bool"/>
+      <Option name="parameters_collapsed" value="true" type="bool"/>
+    </Option>
+    <Option name="WeightforVegetation" type="Map">
+      <Option name="color" value="" type="QString"/>
+      <Option name="comment" type="Map">
+        <Option name="color" value="" type="QString"/>
+        <Option name="component_description" value="" type="QString"/>
+        <Option name="component_height" value="60" type="double"/>
+        <Option name="component_pos_x" value="555" type="double"/>
+        <Option name="component_pos_y" value="15" type="double"/>
+        <Option name="component_width" value="100" type="double"/>
+        <Option name="outputs_collapsed" value="true" type="bool"/>
+        <Option name="parameters_collapsed" value="true" type="bool"/>
+      </Option>
+      <Option name="component_description" value="WeightforVegetation" type="QString"/>
+      <Option name="component_height" value="30" type="double"/>
+      <Option name="component_pos_x" value="135" type="double"/>
+      <Option name="component_pos_y" value="465" type="double"/>
+      <Option name="component_width" value="210" type="double"/>
+      <Option name="name" value="WeightforVegetation" type="QString"/>
       <Option name="outputs_collapsed" value="true" type="bool"/>
       <Option name="parameters_collapsed" value="true" type="bool"/>
     </Option>
