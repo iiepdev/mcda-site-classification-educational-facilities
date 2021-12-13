@@ -32,33 +32,7 @@
         </Option>
       </Option>
       <Option value="gdal:cliprasterbymasklayer_1" type="QString" name="id"/>
-      <Option type="Map" name="outputs">
-        <Option type="Map" name="Hazard index">
-          <Option value="gdal:cliprasterbymasklayer_1" type="QString" name="child_id"/>
-          <Option value="" type="QString" name="color"/>
-          <Option type="Map" name="comment">
-            <Option value="" type="QString" name="color"/>
-            <Option value="" type="QString" name="component_description"/>
-            <Option value="60" type="double" name="component_height"/>
-            <Option value="0" type="double" name="component_pos_x"/>
-            <Option value="0" type="double" name="component_pos_y"/>
-            <Option value="100" type="double" name="component_width"/>
-            <Option value="true" type="bool" name="outputs_collapsed"/>
-            <Option value="true" type="bool" name="parameters_collapsed"/>
-          </Option>
-          <Option value="Hazard index" type="QString" name="component_description"/>
-          <Option value="30" type="double" name="component_height"/>
-          <Option value="1810" type="double" name="component_pos_x"/>
-          <Option value="225" type="double" name="component_pos_y"/>
-          <Option value="200" type="double" name="component_width"/>
-          <Option type="invalid" name="default_value"/>
-          <Option value="false" type="bool" name="mandatory"/>
-          <Option value="Hazard index" type="QString" name="name"/>
-          <Option value="OUTPUT" type="QString" name="output_name"/>
-          <Option value="true" type="bool" name="outputs_collapsed"/>
-          <Option value="true" type="bool" name="parameters_collapsed"/>
-        </Option>
-      </Option>
+      <Option name="outputs"/>
       <Option value="true" type="bool" name="outputs_collapsed"/>
       <Option value="true" type="bool" name="parameters_collapsed"/>
       <Option type="Map" name="params">
@@ -419,33 +393,7 @@
         </Option>
       </Option>
       <Option value="gdal:rastercalculator_2" type="QString" name="id"/>
-      <Option type="Map" name="outputs">
-        <Option type="Map" name="Layer 1">
-          <Option value="gdal:rastercalculator_2" type="QString" name="child_id"/>
-          <Option value="" type="QString" name="color"/>
-          <Option type="Map" name="comment">
-            <Option value="" type="QString" name="color"/>
-            <Option value="" type="QString" name="component_description"/>
-            <Option value="60" type="double" name="component_height"/>
-            <Option value="0" type="double" name="component_pos_x"/>
-            <Option value="0" type="double" name="component_pos_y"/>
-            <Option value="100" type="double" name="component_width"/>
-            <Option value="true" type="bool" name="outputs_collapsed"/>
-            <Option value="true" type="bool" name="parameters_collapsed"/>
-          </Option>
-          <Option value="Layer 1" type="QString" name="component_description"/>
-          <Option value="30" type="double" name="component_height"/>
-          <Option value="1530" type="double" name="component_pos_x"/>
-          <Option value="180" type="double" name="component_pos_y"/>
-          <Option value="200" type="double" name="component_width"/>
-          <Option type="invalid" name="default_value"/>
-          <Option value="false" type="bool" name="mandatory"/>
-          <Option value="Layer 1" type="QString" name="name"/>
-          <Option value="OUTPUT" type="QString" name="output_name"/>
-          <Option value="true" type="bool" name="outputs_collapsed"/>
-          <Option value="true" type="bool" name="parameters_collapsed"/>
-        </Option>
-      </Option>
+      <Option name="outputs"/>
       <Option value="true" type="bool" name="outputs_collapsed"/>
       <Option value="true" type="bool" name="parameters_collapsed"/>
       <Option type="Map" name="params">
@@ -493,7 +441,7 @@
         </Option>
         <Option type="List" name="FORMULA">
           <Option type="Map">
-            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_1_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_1_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_1_MIN  ),'.',',')),')*4')" type="QString" name="expression"/>
+            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_1_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_1_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_1_MIN  ),'.',',')),')*3 + 1')" type="QString" name="expression"/>
             <Option value="3" type="int" name="source"/>
           </Option>
         </Option>
@@ -585,33 +533,7 @@
         </Option>
       </Option>
       <Option value="gdal:rastercalculator_3" type="QString" name="id"/>
-      <Option type="Map" name="outputs">
-        <Option type="Map" name="Layer 2">
-          <Option value="gdal:rastercalculator_3" type="QString" name="child_id"/>
-          <Option value="" type="QString" name="color"/>
-          <Option type="Map" name="comment">
-            <Option value="" type="QString" name="color"/>
-            <Option value="" type="QString" name="component_description"/>
-            <Option value="60" type="double" name="component_height"/>
-            <Option value="0" type="double" name="component_pos_x"/>
-            <Option value="0" type="double" name="component_pos_y"/>
-            <Option value="100" type="double" name="component_width"/>
-            <Option value="true" type="bool" name="outputs_collapsed"/>
-            <Option value="true" type="bool" name="parameters_collapsed"/>
-          </Option>
-          <Option value="Layer 2" type="QString" name="component_description"/>
-          <Option value="30" type="double" name="component_height"/>
-          <Option value="1530" type="double" name="component_pos_x"/>
-          <Option value="240" type="double" name="component_pos_y"/>
-          <Option value="200" type="double" name="component_width"/>
-          <Option type="invalid" name="default_value"/>
-          <Option value="false" type="bool" name="mandatory"/>
-          <Option value="Layer 2" type="QString" name="name"/>
-          <Option value="OUTPUT" type="QString" name="output_name"/>
-          <Option value="true" type="bool" name="outputs_collapsed"/>
-          <Option value="true" type="bool" name="parameters_collapsed"/>
-        </Option>
-      </Option>
+      <Option name="outputs"/>
       <Option value="true" type="bool" name="outputs_collapsed"/>
       <Option value="true" type="bool" name="parameters_collapsed"/>
       <Option type="Map" name="params">
@@ -659,7 +581,7 @@
         </Option>
         <Option type="List" name="FORMULA">
           <Option type="Map">
-            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_2_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_2_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_2_MIN  ),'.',',')),')*4')" type="QString" name="expression"/>
+            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_2_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_2_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_2_MIN  ),'.',',')),')*3 + 1')" type="QString" name="expression"/>
             <Option value="3" type="int" name="source"/>
           </Option>
         </Option>
@@ -755,33 +677,7 @@
         </Option>
       </Option>
       <Option value="gdal:rastercalculator_4" type="QString" name="id"/>
-      <Option type="Map" name="outputs">
-        <Option type="Map" name="Layer 3">
-          <Option value="gdal:rastercalculator_4" type="QString" name="child_id"/>
-          <Option value="" type="QString" name="color"/>
-          <Option type="Map" name="comment">
-            <Option value="" type="QString" name="color"/>
-            <Option value="" type="QString" name="component_description"/>
-            <Option value="60" type="double" name="component_height"/>
-            <Option value="0" type="double" name="component_pos_x"/>
-            <Option value="0" type="double" name="component_pos_y"/>
-            <Option value="100" type="double" name="component_width"/>
-            <Option value="true" type="bool" name="outputs_collapsed"/>
-            <Option value="true" type="bool" name="parameters_collapsed"/>
-          </Option>
-          <Option value="Layer 3" type="QString" name="component_description"/>
-          <Option value="30" type="double" name="component_height"/>
-          <Option value="1530" type="double" name="component_pos_x"/>
-          <Option value="300" type="double" name="component_pos_y"/>
-          <Option value="200" type="double" name="component_width"/>
-          <Option type="invalid" name="default_value"/>
-          <Option value="false" type="bool" name="mandatory"/>
-          <Option value="Layer 3" type="QString" name="name"/>
-          <Option value="OUTPUT" type="QString" name="output_name"/>
-          <Option value="true" type="bool" name="outputs_collapsed"/>
-          <Option value="true" type="bool" name="parameters_collapsed"/>
-        </Option>
-      </Option>
+      <Option name="outputs"/>
       <Option value="true" type="bool" name="outputs_collapsed"/>
       <Option value="true" type="bool" name="parameters_collapsed"/>
       <Option type="Map" name="params">
@@ -829,7 +725,7 @@
         </Option>
         <Option type="List" name="FORMULA">
           <Option type="Map">
-            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_3_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_3_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_3_MIN  ),'.',',')),')*4')" type="QString" name="expression"/>
+            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_3_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_3_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_3_MIN  ),'.',',')),')*3 + 1')" type="QString" name="expression"/>
             <Option value="3" type="int" name="source"/>
           </Option>
         </Option>
@@ -973,7 +869,7 @@
         </Option>
         <Option type="List" name="FORMULA">
           <Option type="Map">
-            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_4_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_4_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_4_MIN  ),'.',',')),')*4')" type="QString" name="expression"/>
+            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_4_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_4_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_4_MIN  ),'.',',')),')*3 + 1')" type="QString" name="expression"/>
             <Option value="3" type="int" name="source"/>
           </Option>
         </Option>
@@ -1117,7 +1013,7 @@
         </Option>
         <Option type="List" name="FORMULA">
           <Option type="Map">
-            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_5_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_5_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_5_MIN  ),'.',',')),')*4')" type="QString" name="expression"/>
+            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_5_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_5_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_5_MIN  ),'.',',')),')*3 + 1')" type="QString" name="expression"/>
             <Option value="3" type="int" name="source"/>
           </Option>
         </Option>
@@ -1261,13 +1157,179 @@
         </Option>
         <Option type="List" name="FORMULA">
           <Option type="Map">
-            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_6_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_6_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_6_MIN  ),'.',',')),')*4')" type="QString" name="expression"/>
+            <Option value="concat('(A - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_6_MIN  ),'.',',')),')/(',to_string(replace(to_string(  @Raster_layer_statistics_layer_6_MAX  ),'.',',')),' - ',to_string(replace(to_string(  @Raster_layer_statistics_layer_6_MIN  ),'.',',')),')*3 + 1')" type="QString" name="expression"/>
             <Option value="3" type="int" name="source"/>
           </Option>
         </Option>
         <Option type="List" name="INPUT_A">
           <Option type="Map">
             <Option value="gdal:warpreproject_6" type="QString" name="child_id"/>
+            <Option value="OUTPUT" type="QString" name="output_name"/>
+            <Option value="1" type="int" name="source"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT_B">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option type="invalid" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT_C">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option type="invalid" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT_D">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option type="invalid" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT_E">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option type="invalid" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT_F">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option type="invalid" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="NO_DATA">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option type="invalid" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="OPTIONS">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option value="" type="QString" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="RTYPE">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option value="5" type="int" name="static_value"/>
+          </Option>
+        </Option>
+      </Option>
+    </Option>
+    <Option type="Map" name="gdal:rastercalculator_8">
+      <Option value="true" type="bool" name="active"/>
+      <Option name="alg_config"/>
+      <Option value="gdal:rastercalculator" type="QString" name="alg_id"/>
+      <Option value="" type="QString" name="color"/>
+      <Option type="Map" name="comment">
+        <Option value="" type="QString" name="color"/>
+        <Option value="" type="QString" name="component_description"/>
+        <Option value="60" type="double" name="component_height"/>
+        <Option value="2230" type="double" name="component_pos_x"/>
+        <Option value="490" type="double" name="component_pos_y"/>
+        <Option value="100" type="double" name="component_width"/>
+        <Option value="true" type="bool" name="outputs_collapsed"/>
+        <Option value="true" type="bool" name="parameters_collapsed"/>
+      </Option>
+      <Option value="Raster calculator" type="QString" name="component_description"/>
+      <Option value="30" type="double" name="component_height"/>
+      <Option value="1810" type="double" name="component_pos_x"/>
+      <Option value="255" type="double" name="component_pos_y"/>
+      <Option value="200" type="double" name="component_width"/>
+      <Option type="List" name="dependencies">
+        <Option type="Map">
+          <Option value="gdal:cliprasterbymasklayer_1" type="QString" name="child_id"/>
+          <Option value="" type="QString" name="conditional_branch"/>
+        </Option>
+        <Option type="Map">
+          <Option value="native:rasterlayerstatistics_7" type="QString" name="child_id"/>
+          <Option value="" type="QString" name="conditional_branch"/>
+        </Option>
+      </Option>
+      <Option value="gdal:rastercalculator_8" type="QString" name="id"/>
+      <Option type="Map" name="outputs">
+        <Option type="Map" name="Hazard index">
+          <Option value="gdal:rastercalculator_8" type="QString" name="child_id"/>
+          <Option value="" type="QString" name="color"/>
+          <Option type="Map" name="comment">
+            <Option value="" type="QString" name="color"/>
+            <Option value="" type="QString" name="component_description"/>
+            <Option value="60" type="double" name="component_height"/>
+            <Option value="0" type="double" name="component_pos_x"/>
+            <Option value="0" type="double" name="component_pos_y"/>
+            <Option value="100" type="double" name="component_width"/>
+            <Option value="true" type="bool" name="outputs_collapsed"/>
+            <Option value="true" type="bool" name="parameters_collapsed"/>
+          </Option>
+          <Option value="Hazard index" type="QString" name="component_description"/>
+          <Option value="30" type="double" name="component_height"/>
+          <Option value="1810" type="double" name="component_pos_x"/>
+          <Option value="315" type="double" name="component_pos_y"/>
+          <Option value="200" type="double" name="component_width"/>
+          <Option type="invalid" name="default_value"/>
+          <Option value="false" type="bool" name="mandatory"/>
+          <Option value="Hazard index" type="QString" name="name"/>
+          <Option value="OUTPUT" type="QString" name="output_name"/>
+          <Option value="true" type="bool" name="outputs_collapsed"/>
+          <Option value="true" type="bool" name="parameters_collapsed"/>
+        </Option>
+      </Option>
+      <Option value="true" type="bool" name="outputs_collapsed"/>
+      <Option value="true" type="bool" name="parameters_collapsed"/>
+      <Option type="Map" name="params">
+        <Option type="List" name="BAND_A">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option value="1" type="QString" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="BAND_B">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option type="invalid" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="BAND_C">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option type="invalid" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="BAND_D">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option type="invalid" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="BAND_E">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option type="invalid" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="BAND_F">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option type="invalid" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="EXTRA">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option value="" type="QString" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="FORMULA">
+          <Option type="Map">
+            <Option value="concat('(A - ',to_string(replace(to_string( @Raster_layer_statistics_MIN ) ,',','.')),')/(',to_string(replace(to_string( @Raster_layer_statistics_MAX ) ,',','.')),' - ',to_string(replace(to_string( @Raster_layer_statistics_MIN ) ,',','.')),')*3 + 1')" type="QString" name="expression"/>
+            <Option value="3" type="int" name="source"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT_A">
+          <Option type="Map">
+            <Option value="gdal:cliprasterbymasklayer_1" type="QString" name="child_id"/>
             <Option value="OUTPUT" type="QString" name="output_name"/>
             <Option value="1" type="int" name="source"/>
           </Option>
@@ -2431,6 +2493,47 @@
         </Option>
       </Option>
     </Option>
+    <Option type="Map" name="native:rasterlayerstatistics_7">
+      <Option value="true" type="bool" name="active"/>
+      <Option name="alg_config"/>
+      <Option value="native:rasterlayerstatistics" type="QString" name="alg_id"/>
+      <Option value="" type="QString" name="color"/>
+      <Option type="Map" name="comment">
+        <Option value="" type="QString" name="color"/>
+        <Option value="" type="QString" name="component_description"/>
+        <Option value="60" type="double" name="component_height"/>
+        <Option value="1990" type="double" name="component_pos_x"/>
+        <Option value="490" type="double" name="component_pos_y"/>
+        <Option value="100" type="double" name="component_width"/>
+        <Option value="true" type="bool" name="outputs_collapsed"/>
+        <Option value="true" type="bool" name="parameters_collapsed"/>
+      </Option>
+      <Option value="Raster layer statistics" type="QString" name="component_description"/>
+      <Option value="30" type="double" name="component_height"/>
+      <Option value="1810" type="double" name="component_pos_x"/>
+      <Option value="195" type="double" name="component_pos_y"/>
+      <Option value="200" type="double" name="component_width"/>
+      <Option name="dependencies"/>
+      <Option value="native:rasterlayerstatistics_7" type="QString" name="id"/>
+      <Option name="outputs"/>
+      <Option value="true" type="bool" name="outputs_collapsed"/>
+      <Option value="true" type="bool" name="parameters_collapsed"/>
+      <Option type="Map" name="params">
+        <Option type="List" name="BAND">
+          <Option type="Map">
+            <Option value="2" type="int" name="source"/>
+            <Option value="1" type="QString" name="static_value"/>
+          </Option>
+        </Option>
+        <Option type="List" name="INPUT">
+          <Option type="Map">
+            <Option value="gdal:cliprasterbymasklayer_1" type="QString" name="child_id"/>
+            <Option value="OUTPUT" type="QString" name="output_name"/>
+            <Option value="1" type="int" name="source"/>
+          </Option>
+        </Option>
+      </Option>
+    </Option>
     <Option type="Map" name="native:rastersampling_1">
       <Option value="true" type="bool" name="active"/>
       <Option name="alg_config"/>
@@ -2470,7 +2573,7 @@
           <Option value="Hazard Index - Schools" type="QString" name="component_description"/>
           <Option value="30" type="double" name="component_height"/>
           <Option value="1810" type="double" name="component_pos_x"/>
-          <Option value="285" type="double" name="component_pos_y"/>
+          <Option value="375" type="double" name="component_pos_y"/>
           <Option value="200" type="double" name="component_width"/>
           <Option type="invalid" name="default_value"/>
           <Option value="false" type="bool" name="mandatory"/>
@@ -2797,7 +2900,7 @@
       <Option value="WeightforHazardlayer6" type="QString" name="name"/>
       <Option value="number" type="QString" name="parameter_type"/>
     </Option>
-    <Option type="Map" name="gdal:cliprasterbymasklayer_1:Hazard index">
+    <Option type="Map" name="gdal:rastercalculator_8:Hazard index">
       <Option value="true" type="bool" name="create_by_default"/>
       <Option type="invalid" name="default"/>
       <Option type="invalid" name="defaultGui"/>
@@ -2805,43 +2908,7 @@
       <Option value="0" type="int" name="flags"/>
       <Option value="" type="QString" name="help"/>
       <Option name="metadata"/>
-      <Option value="gdal:cliprasterbymasklayer_1:Hazard index" type="QString" name="name"/>
-      <Option value="rasterDestination" type="QString" name="parameter_type"/>
-      <Option value="false" type="bool" name="supports_non_file_outputs"/>
-    </Option>
-    <Option type="Map" name="gdal:rastercalculator_2:Layer 1">
-      <Option value="true" type="bool" name="create_by_default"/>
-      <Option type="invalid" name="default"/>
-      <Option type="invalid" name="defaultGui"/>
-      <Option value="Layer 1" type="QString" name="description"/>
-      <Option value="0" type="int" name="flags"/>
-      <Option value="" type="QString" name="help"/>
-      <Option name="metadata"/>
-      <Option value="gdal:rastercalculator_2:Layer 1" type="QString" name="name"/>
-      <Option value="rasterDestination" type="QString" name="parameter_type"/>
-      <Option value="false" type="bool" name="supports_non_file_outputs"/>
-    </Option>
-    <Option type="Map" name="gdal:rastercalculator_3:Layer 2">
-      <Option value="true" type="bool" name="create_by_default"/>
-      <Option type="invalid" name="default"/>
-      <Option type="invalid" name="defaultGui"/>
-      <Option value="Layer 2" type="QString" name="description"/>
-      <Option value="0" type="int" name="flags"/>
-      <Option value="" type="QString" name="help"/>
-      <Option name="metadata"/>
-      <Option value="gdal:rastercalculator_3:Layer 2" type="QString" name="name"/>
-      <Option value="rasterDestination" type="QString" name="parameter_type"/>
-      <Option value="false" type="bool" name="supports_non_file_outputs"/>
-    </Option>
-    <Option type="Map" name="gdal:rastercalculator_4:Layer 3">
-      <Option value="true" type="bool" name="create_by_default"/>
-      <Option type="invalid" name="default"/>
-      <Option type="invalid" name="defaultGui"/>
-      <Option value="Layer 3" type="QString" name="description"/>
-      <Option value="0" type="int" name="flags"/>
-      <Option value="" type="QString" name="help"/>
-      <Option name="metadata"/>
-      <Option value="gdal:rastercalculator_4:Layer 3" type="QString" name="name"/>
+      <Option value="gdal:rastercalculator_8:Hazard index" type="QString" name="name"/>
       <Option value="rasterDestination" type="QString" name="parameter_type"/>
       <Option value="false" type="bool" name="supports_non_file_outputs"/>
     </Option>
