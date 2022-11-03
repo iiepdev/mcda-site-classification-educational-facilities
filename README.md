@@ -2,7 +2,7 @@
 
 Here are the code and documents from the paper "Assessing natural hazard risks for planning the location of educational facilities: Multi-criteria decision analysis for site classification" by Vargas Mesa, Sheldon & Gagnon (forthcoming), in a joint publication from IIEP-UNESCO and UNOSAT. Part A (0 to 3)of this paper aims at showcasing a methodology to perform a customized classification of educational facilities according to a context-relevant natural hazard risk index. Part B (4) includes a multi-criteria decision analysis to determine the suitability of land to host new infrastructure, and to provide insights in the maintenance of the existing one. To find more about this paper, and the work IIEP-UNESCO performs in the intersection of geospatial data and educational planning and management, go to http://www.iiep.unesco.org/geo
 
-A QGIS plugin has been developed and is currently accessible here: https://github.com/GispoCoding/mcda-plugin
+A QGIS plugin has been developed and is currently accessible here https://github.com/GispoCoding/mcda-plugin and can be found on the QGIS plugin page here https://plugins.qgis.org/plugins/mcda/. 
 
 IIEPdev work is available under the Open Access under the Attribution-ShareAlike 3.0 IGO (CC-BY-SA 3.0 IGO) licence (http://creativecommons.org/licenses/by-sa/3.0/igo/). By using the content of this repository, the users accept to be bound by the terms of use of the UNESCO Open Access Repository (http://www.unesco.org/open-access/terms-use-ccbysa-en).
 
